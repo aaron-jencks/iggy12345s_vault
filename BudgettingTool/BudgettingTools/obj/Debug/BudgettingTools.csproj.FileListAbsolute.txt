@@ -1,0 +1,12 @@
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\bin\Debug\BudgettingTools.dll
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\bin\Debug\BudgettingTools.pdb
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.Templates.FormsControls.BankComponentForm.resources
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.dll
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.pdb
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.Templates.FormsControls.AAccountForm.resources
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.Templates.FormsControls.AExpenseForm.resources
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.AccountLinkingWizard.resources
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTools\obj\Debug\BudgettingTools.Templates.AccountWizard.resources

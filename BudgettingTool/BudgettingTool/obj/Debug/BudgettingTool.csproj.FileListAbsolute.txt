@@ -1,0 +1,13 @@
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\bin\Debug\BudgettingTool.exe.config
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\bin\Debug\BudgettingTool.exe
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\bin\Debug\BudgettingTool.pdb
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\bin\Debug\BudgettingTools.dll
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\bin\Debug\BudgettingTools.pdb
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.Form1.resources
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.Properties.Resources.resources
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.exe
+G:\Github Repository\iggy12345s_vault\BudgettingTool\BudgettingTool\obj\Debug\BudgettingTool.pdb
