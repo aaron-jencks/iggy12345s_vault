@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgettingTools.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace BudgettingTools
 {
     public class User
     {
+        public List<IAccount> Accounts { get; protected set; } = new List<IAccount>();
+
+        public List<IExpense> Expenses { get; protected set; } = new List<IExpense>();
     }
 }

@@ -37,6 +37,8 @@
             this.layerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spriteSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.layerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonPencil = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEraser = new System.Windows.Forms.ToolStripButton();
@@ -54,8 +56,7 @@
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.trackBarLayerOpacity = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.layerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCanvas)).BeginInit();
@@ -88,13 +89,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -103,7 +105,7 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.layerToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // layerToolStripMenuItem
@@ -127,6 +129,21 @@
             this.spriteSizeToolStripMenuItem.Name = "spriteSizeToolStripMenuItem";
             this.spriteSizeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.spriteSizeToolStripMenuItem.Text = "Sprite Size";
+            // 
+            // layerToolStripMenuItem1
+            // 
+            this.layerToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearToolStripMenuItem});
+            this.layerToolStripMenuItem1.Name = "layerToolStripMenuItem1";
+            this.layerToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.layerToolStripMenuItem1.Text = "Layer";
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -277,21 +294,6 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Layer Opacity:";
             // 
-            // layerToolStripMenuItem1
-            // 
-            this.layerToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearToolStripMenuItem});
-            this.layerToolStripMenuItem1.Name = "layerToolStripMenuItem1";
-            this.layerToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.layerToolStripMenuItem1.Text = "Layer";
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
-            // 
             // SpriteDesigner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,6 +359,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem layerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

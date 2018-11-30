@@ -40,11 +40,11 @@ namespace Fireworks
 
         public Particle(Vector2D pos)
         {
-            this.Pos = pos;
+            Pos = pos;
             Vel = new Vector2D();
             Acc = new Vector2D();
 
-            color = Color.FromArgb(255, rng.Next(0, 255), rng.Next(0, 255), rng.Next(0, 255));
+            color = Color.FromArgb(255, rng.Next(100, 255), rng.Next(100, 255), rng.Next(100, 255));
 
             brush = new SolidBrush(color);
             pen = new Pen((Brush)brush.Clone(), 1);

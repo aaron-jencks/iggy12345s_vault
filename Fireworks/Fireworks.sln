@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fireworks", "Fireworks\Fireworks.csproj", "{7D4A1DB8-634C-40F9-B7C8-1B2D627F45D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteEditor", "..\GameMakingKit\SpriteEditor\SpriteEditor.csproj", "{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,11 +17,15 @@ Global
 		{7D4A1DB8-634C-40F9-B7C8-1B2D627F45D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4A1DB8-634C-40F9-B7C8-1B2D627F45D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4A1DB8-634C-40F9-B7C8-1B2D627F45D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {83D1F70B-EC1A-4FD6-966B-4CE0BBCDB6D0}
+		SolutionGuid = {E8AC8AA7-2F2A-4B0A-8567-532C5C9ABEDD}
 	EndGlobalSection
 EndGlobal

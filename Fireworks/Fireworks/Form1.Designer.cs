@@ -34,9 +34,10 @@
             // 
             // canvasBox
             // 
-            this.canvasBox.Location = new System.Drawing.Point(12, 12);
+            this.canvasBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canvasBox.Location = new System.Drawing.Point(0, 0);
             this.canvasBox.Name = "canvasBox";
-            this.canvasBox.Size = new System.Drawing.Size(697, 331);
+            this.canvasBox.Size = new System.Drawing.Size(800, 450);
             this.canvasBox.TabIndex = 0;
             this.canvasBox.TabStop = false;
             this.canvasBox.Paint += new System.Windows.Forms.PaintEventHandler(this.canvasBox_Paint);
@@ -45,13 +46,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.canvasBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.Resize += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvasBox)).EndInit();
             this.ResumeLayout(false);

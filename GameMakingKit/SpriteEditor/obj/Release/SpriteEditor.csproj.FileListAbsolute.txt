@@ -1,0 +1,9 @@
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\bin\Release\SpriteEditor.exe
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\bin\Release\SpriteEditor.pdb
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.SpriteDesigner.resources
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.Properties.Resources.resources
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.exe
+G:\Github Repository\iggy12345s_vault\GameMakingKit\SpriteEditor\obj\Release\SpriteEditor.pdb

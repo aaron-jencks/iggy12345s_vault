@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +15,26 @@ namespace Fireworks
 {
     public partial class Form1 : Form
     {
+        #region Windows API Functions
+
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        static extern bool GetClientRect(IntPtr hWnd, out Rectangle lpRect);
+
+        #endregion
+
         #region Properties
 
         private List<Firework> firework;
+        private List<Sprite> sprites = new List<Sprite>();
         private static int refresh = 10;   // refresh delay in ms
         private static double launchProb = 0.05;
         private static int minVel = -5;
@@ -31,7 +49,31 @@ namespace Fireworks
         private bool isExitting = false;
         private bool isDrawing = false;
 
+        private Point mouseLocation;
+        private bool previewMode = false;
+
         public Form1()
+        {
+            
+            InitializeComponent();
+
+            // Sets up the background color of the canvas.
+            canvasBox.Image = new Bitmap(Width, Height);
+            canvasBox.BackColor = Color.Black;
+            canvasBox.Invalidate();
+
+            firework = new List<Firework>();
+
+            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pikachu Outline.bmp", 1));
+            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pachirisu Outline.bmp", 4));
+            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\LaurenText.bmp", 2));
+            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\BongoCat.bmp", 2));
+
+            painter = new Thread(ExecutionModule);
+            painter.Start();
+        }
+
+        public Form1(Rectangle Bounds)
         {
             InitializeComponent();
 
@@ -42,8 +84,50 @@ namespace Fireworks
 
             firework = new List<Firework>();
 
+            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pikachu Outline.bmp", 1));
+            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pachirisu Outline.bmp", 4));
+            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\LaurenText.bmp", 2));
+            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\BongoCat.bmp", 2));
+
             painter = new Thread(ExecutionModule);
             painter.Start();
+
+            this.Bounds = Bounds;
+        }
+
+        public Form1(IntPtr PreviewWndHandle)
+        {
+            InitializeComponent();
+
+            // Sets up the background color of the canvas.
+            canvasBox.Image = new Bitmap(Width, Height);
+            canvasBox.BackColor = Color.Black;
+            canvasBox.Invalidate();
+
+            firework = new List<Firework>();
+
+            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pikachu Outline.bmp", 1));
+            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pachirisu Outline.bmp", 4));
+            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\LaurenText.bmp", 2));
+            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\BongoCat.bmp", 2));
+
+            painter = new Thread(ExecutionModule);
+            painter.Start();
+
+            // Set the preview window as the parent of this window
+            SetParent(this.Handle, PreviewWndHandle);
+
+            // Make this a child window so it will close when the parent dialog closes
+            // GWL_STYLE = -16, WS_CHILD = 0x40000000
+            SetWindowLong(this.Handle, -16, new IntPtr(GetWindowLong(this.Handle, -16) | 0x40000000));
+
+            // Place our window inside the parent
+            Rectangle ParentRect;
+            GetClientRect(PreviewWndHandle, out ParentRect);
+            Size = ParentRect.Size;
+            Location = new Point(0, 0);
+
+            previewMode = true;
         }
 
         #region Execution Engine
@@ -71,32 +155,31 @@ namespace Fireworks
                 {
                     using (Graphics g = Graphics.FromImage(canvasBox.Image))
                     {
-                        Task t = Task.Factory.StartNew(() =>
-                        {
-                            Image image = (Image)canvasBox.Image.Clone();
+                        Image image = (Image)canvasBox.Image.Clone();
 
-                            g.Clear(Color.Black);
+                        g.Clear(Color.Black);
 
-                            Bitmap bmp = new Bitmap(image.Width, image.Height);
+                        
+                        Bitmap bmp = new Bitmap(image.Width, image.Height);
 
-                            //create a color matrix object  
-                            ColorMatrix matrix = new ColorMatrix();
+                        //create a color matrix object  
+                        ColorMatrix matrix = new ColorMatrix();
 
-                            //set the opacity  
-                            matrix.Matrix33 *= 0.95f;
+                        //set the opacity  
+                        matrix.Matrix33 *= 0.95f;
+                        if (matrix.Matrix33 < 0.75)
+                            matrix.Matrix33 = 0;
 
-                            //create image attributes  
-                            ImageAttributes attributes = new ImageAttributes();
+                        //create image attributes  
+                        ImageAttributes attributes = new ImageAttributes();
 
-                            //set the color(opacity) of the image  
-                            attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+                        //set the color(opacity) of the image  
+                        attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                            //now draw the image  
-                            g.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
-                        });
+                        //now draw the image  
+                        g.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
 
-                        while (!t.IsCompleted) ;
-
+                        
                         lock (firework)
                             foreach(Firework f in firework)
                                 f.Show(g);
@@ -123,28 +206,35 @@ namespace Fireworks
                     lock (firework)
                     {
                         /*
-                        firework.Add(new Pikachu_Firework(new Vector2D(
-                                Width/2, Height/2), //rng.Next(Width), Height),
-                                new Vector2D(0, 0)));// rng.Next(maxVel, minVel))));
+                        firework.Add(new SpriteFirework(
+                                new Vector2D(rng.Next(Width), Height),
+                                new Vector2D(0, rng.Next(maxVel, minVel)),
+                                sprites[rng.Next(0, sprites.Count - 1)], 0.5));
                                 */
+
                         
                         double r = rng.NextDouble();
 
-                        if (r > 0.25)
+                        if (r > 0.75)
                             firework.Add(new Firework(new Vector2D(
                                 rng.Next(Width), Height),
                                 new Vector2D(0, rng.Next(maxVel, minVel))));
-                        else if (r > 0.05)
+                        else if (r > 0.25)
                             firework.Add(new Heart_Firework(new Vector2D(
                                 rng.Next(Width), Height),
                                 new Vector2D(0, rng.Next(maxVel, minVel))));
+                        else if (r > 0.1)
+                            firework.Add(new SpriteFirework(
+                                new Vector2D(rng.Next(Width), Height),
+                                new Vector2D(0, rng.Next(maxVel, minVel)),
+                                sprites[rng.Next(0, sprites.Count)]));
                         /*else
                             firework.Add(new Pikachu_Firework(new Vector2D(
                                 rng.Next(Width), Height),
                                 new Vector2D(0, rng.Next(maxVel, minVel))));*/
-                                
+
                     }
-                        
+
 
                 UpdateParticles();
                 canvasBox.Invalidate();
@@ -157,6 +247,9 @@ namespace Fireworks
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Cursor.Hide();
+            TopMost = true;
+
             while (isDrawing) ;
 
             canDraw = false;
@@ -182,6 +275,31 @@ namespace Fireworks
         private void canvasBox_Paint(object sender, PaintEventArgs e)
         {
             DrawParticles();
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!previewMode)
+                Application.Exit();
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!mouseLocation.IsEmpty)
+            {
+                // Terminate if mouse is moved a significant distance
+                if (Math.Abs(mouseLocation.X - e.X) > 5 ||
+                    Math.Abs(mouseLocation.Y - e.Y) > 5)
+                    Application.Exit();
+            }
+
+            // Update current mouse location
+            mouseLocation = e.Location;
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

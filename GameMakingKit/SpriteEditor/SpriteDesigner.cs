@@ -416,6 +416,22 @@ namespace SpriteEditor
             colorControl();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.Filter = "Bitmap Files (*.bmp)|*.bmp";
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.DefaultExt = "bmp";
+            saveFileDialog1.InitialDirectory =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                canvasImage.Save(saveFileDialog1.OpenFile(), ImageFormat.Bmp);
+            }
+        }
+
         #endregion
 
         private void pictureBoxCanvas_MouseClick(object sender, MouseEventArgs e)
@@ -490,5 +506,6 @@ namespace SpriteEditor
                 canvasVScrollBar.Maximum = (int)(pictureBoxCanvas.Height - (pictureBoxCanvas.Height / zoomPercentage));
             }
         }
+
     }
 }

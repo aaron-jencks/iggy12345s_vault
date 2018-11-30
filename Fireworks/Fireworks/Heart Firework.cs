@@ -10,7 +10,7 @@ namespace Fireworks
     {
         public Heart_Firework(Vector2D pos, Vector2D vel) : base(pos, vel)
         {
-            particleDiminishRate = 8;
+            particleDiminishRate = 15;
         }
 
         public override void Explode(int qty = 200)
