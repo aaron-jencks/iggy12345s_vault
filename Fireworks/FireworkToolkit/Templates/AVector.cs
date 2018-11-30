@@ -45,54 +45,134 @@ namespace FireworkToolkit.Templates
 
         public static AVector operator +(AVector a, AVector b)
         {
-            IVector v = a.Clone();
+            AVector v = (AVector)a.Clone();
 
-            return new AVector(a.x + b.x, a.y + b.y);
+            foreach(char c in b.AllComponents().Keys)
+            {
+                if (v.AllComponents().ContainsKey(c))
+                    v.AllComponents()[c] += b.AllComponents()[c];
+                else
+                    v.AllComponents().Add(new KeyValuePair<char, double>(c, b.AllComponents()[c]));
+            }
+
+            return v;
         }
 
         public static AVector operator -(AVector a, AVector b)
         {
-            return new AVector(a.x - b.x, a.y - b.y);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in b.AllComponents().Keys)
+            {
+                if (v.AllComponents().ContainsKey(c))
+                    v.AllComponents()[c] -= b.AllComponents()[c];
+                else
+                    v.AllComponents().Add(new KeyValuePair<char, double>(c, -1 * b.AllComponents()[c]));
+            }
+
+            return v;
         }
 
         public static AVector operator *(AVector a, AVector b)
         {
-            return new AVector(a.x * b.x, a.y * b.y);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in b.AllComponents().Keys)
+            {
+                if (v.AllComponents().ContainsKey(c))
+                    v.AllComponents()[c] *= b.AllComponents()[c];
+                else
+                    v.AllComponents().Add(new KeyValuePair<char, double>(c, 0));
+            }
+
+            return v;
         }
 
         public static AVector operator /(AVector a, AVector b)
         {
-            return new AVector(a.x / b.x, a.y / b.y);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in b.AllComponents().Keys)
+            {
+                if (v.AllComponents().ContainsKey(c))
+                    v.AllComponents()[c] /= b.AllComponents()[c];
+                else
+                    v.AllComponents().Add(new KeyValuePair<char, double>(c, 0));
+            }
+
+            return v;
         }
 
         public static AVector operator +(AVector a, double b)
         {
-            return new AVector(a.x + b, a.y + b);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] += b;
+            }
+
+            return v;
         }
 
         public static AVector operator -(AVector a, double b)
         {
-            return new AVector(a.x - b, a.y - b);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] -= b;
+            }
+
+            return v;
         }
 
         public static AVector operator -(double a, AVector b)
         {
-            return new AVector(a - b.x, a - b.y);
+            AVector v = (AVector)b.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] = a - v.AllComponents()[c];
+            }
+
+            return v;
         }
 
         public static AVector operator *(AVector a, double b)
         {
-            return new AVector(a.x * b, a.y * b);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] *= b;
+            }
+
+            return v;
         }
 
         public static AVector operator /(AVector a, double b)
         {
-            return new AVector(a.x / b, a.y / b);
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] /= b;
+            }
+
+            return v;
         }
 
         public static AVector operator /(double a, AVector b)
         {
-            return new AVector(a / b.x, a / b.y);
+            AVector v = (AVector)b.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] = a / v.AllComponents()[c];
+            }
+
+            return v;
         }
 
         #endregion
