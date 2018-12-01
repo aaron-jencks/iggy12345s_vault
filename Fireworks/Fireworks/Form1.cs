@@ -205,14 +205,6 @@ namespace Fireworks
                 if (rng.NextDouble() <= launchProb)
                     lock (firework)
                     {
-                        /*
-                        firework.Add(new SpriteFirework(
-                                new Vector2D(rng.Next(Width), Height),
-                                new Vector2D(0, rng.Next(maxVel, minVel)),
-                                sprites[rng.Next(0, sprites.Count - 1)], 0.5));
-                                */
-
-                        
                         double r = rng.NextDouble();
 
                         if (r > 0.75)
@@ -228,10 +220,6 @@ namespace Fireworks
                                 new Vector2D(rng.Next(Width), Height),
                                 new Vector2D(0, rng.Next(maxVel, minVel)),
                                 sprites[rng.Next(0, sprites.Count)]));
-                        /*else
-                            firework.Add(new Pikachu_Firework(new Vector2D(
-                                rng.Next(Width), Height),
-                                new Vector2D(0, rng.Next(maxVel, minVel))));*/
 
                     }
 

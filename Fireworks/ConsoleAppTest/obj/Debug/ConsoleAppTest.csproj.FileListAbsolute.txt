@@ -1,0 +1,6 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\ConsoleAppTest\bin\Debug\ConsoleAppTest.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\ConsoleAppTest\bin\Debug\ConsoleAppTest.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\ConsoleAppTest\bin\Debug\ConsoleAppTest.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\ConsoleAppTest\obj\Debug\ConsoleAppTest.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\ConsoleAppTest\obj\Debug\ConsoleAppTest.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\ConsoleAppTest\obj\Debug\ConsoleAppTest.pdb

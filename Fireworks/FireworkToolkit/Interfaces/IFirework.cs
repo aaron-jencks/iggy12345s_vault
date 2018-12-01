@@ -9,7 +9,7 @@ namespace FireworkToolkit.Interfaces
     /// <summary>
     /// An interface representing a firework
     /// </summary>
-    public interface IFirework
+    public interface IFirework : IParticle
     {
         /// <summary>
         /// Causes the firework to explode with the given number of particles

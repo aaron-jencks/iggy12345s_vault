@@ -1,6 +1,8 @@
 ﻿using FireworkToolkit.Interfaces;
+using FireworkToolkit.Vectors;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,7 @@ namespace FireworkToolkit.Templates
         /// <summary>
         /// A collection of particles currently in use by the firework
         /// </summary>
-        protected ICollection<IParticle> particles { get; private set; } = new List<IParticle>();
+        public ICollection<AParticle> Particles { get; private set; } = new List<AParticle>();
 
         /// <summary>
         /// A flag specifying if the firework has exploded yet, or not
@@ -49,16 +51,48 @@ namespace FireworkToolkit.Templates
 
         #endregion
 
+        #region Constructors
+
+        public AFirework(AVector pos, AVector vel) : base(pos, vel)
+        {
+            Position = pos;
+            Velocity = vel;
+        }
+
+        #endregion
+
         #region Methods
 
         public virtual bool Done()
         {
-            return (Exploded && particles.Count == 0);
+            return (Exploded && Particles.Count == 0 && !Busy);
         }
 
         public virtual void Explode(int qty = 100)
         {
             Exploded = true;
+        }
+
+        /// <summary>
+        /// Draws the particles of this firework, or just the singular particle for this if
+        /// the firework has yet to explode.
+        /// </summary>
+        /// <param name="g">The graphics object to use to draw</param>
+        public override void Show(Graphics g)
+        {
+            while (Busy) ;
+            Busy = true;
+            lock (Particles)
+            {
+                foreach (AParticle p in Particles)
+                {
+                    if (ExplosionAlpha >= 0)
+                        p.Color = Color.FromArgb(ExplosionAlpha, p.Color.R, p.Color.G, p.Color.B);
+
+                    p.Show(g);
+                }
+            }
+            Busy = false;
         }
 
         #endregion

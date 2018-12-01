@@ -18,11 +18,48 @@ namespace FireworkToolkit.Templates
 
         #endregion
 
+        /// <summary>
+        /// Creates a new vector with no components
+        /// </summary>
+        public AVector() { }
+
+        /// <summary>
+        /// Creates a new vector with the given vector components
+        /// </summary>
+        /// <param name="comps">Components to use</param>
+        public AVector(Dictionary<char, double> comps)
+        {
+            components = comps;
+        }
+
         #region Methods
 
-        public virtual IDictionary<char, double> AllComponents()
+        public virtual Dictionary<char, double> AllComponents()
         {
+            /*
+            Dictionary<char, double> result = new Dictionary<char, double>(components.Count);
+
+            foreach (KeyValuePair<char, double> p in components)
+                result.Add(p.Key, p.Value);
+            */
+
             return components;
+        }
+
+        public virtual void AddComponent(KeyValuePair<char, double> comp)
+        {
+            components.Add(comp.Key, comp.Value);
+        }
+
+        public virtual KeyValuePair<char, double> RemoveComponent(char c)
+        {
+            if (components.ContainsKey(c))
+            {
+                KeyValuePair<char, double> k = new KeyValuePair<char, double>(c, components[c]);
+                components.Remove(c);
+                return k;
+            }
+            return new KeyValuePair<char, double>(c, 0);
         }
 
         public abstract double Angle();
@@ -41,18 +78,29 @@ namespace FireworkToolkit.Templates
             return Math.Sqrt(result);
         }
 
+        public override string ToString()
+        {
+            string result = "";
+
+            foreach (KeyValuePair<char, double> k in AllComponents())
+                result += k.Key + ": " + k.Value + " ";
+
+            return base.ToString() + " " + result;
+        }
+
         #region Operators
 
         public static AVector operator +(AVector a, AVector b)
         {
             AVector v = (AVector)a.Clone();
 
-            foreach(char c in b.AllComponents().Keys)
+            for (int i = 0; i < b.AllComponents().Count; i++)
             {
+                char c = b.AllComponents().ElementAt(i).Key;
                 if (v.AllComponents().ContainsKey(c))
                     v.AllComponents()[c] += b.AllComponents()[c];
                 else
-                    v.AllComponents().Add(new KeyValuePair<char, double>(c, b.AllComponents()[c]));
+                    v.AllComponents().Add(c, b.AllComponents()[c]);
             }
 
             return v;
@@ -62,12 +110,13 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in b.AllComponents().Keys)
+            for (int i = 0; i < b.AllComponents().Count; i++)
             {
+                char c = b.AllComponents().ElementAt(i).Key;
                 if (v.AllComponents().ContainsKey(c))
                     v.AllComponents()[c] -= b.AllComponents()[c];
                 else
-                    v.AllComponents().Add(new KeyValuePair<char, double>(c, -1 * b.AllComponents()[c]));
+                    v.AllComponents().Add(c, -1 * b.AllComponents()[c]);
             }
 
             return v;
@@ -77,12 +126,13 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in b.AllComponents().Keys)
+            for (int i = 0; i < b.AllComponents().Count; i++)
             {
+                char c = b.AllComponents().ElementAt(i).Key;
                 if (v.AllComponents().ContainsKey(c))
                     v.AllComponents()[c] *= b.AllComponents()[c];
                 else
-                    v.AllComponents().Add(new KeyValuePair<char, double>(c, 0));
+                    v.AllComponents().Add(c, 0);
             }
 
             return v;
@@ -92,12 +142,13 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in b.AllComponents().Keys)
+            for (int i = 0; i < b.AllComponents().Count; i++)
             {
+                char c = b.AllComponents().ElementAt(i).Key;
                 if (v.AllComponents().ContainsKey(c))
                     v.AllComponents()[c] /= b.AllComponents()[c];
                 else
-                    v.AllComponents().Add(new KeyValuePair<char, double>(c, 0));
+                    v.AllComponents().Add(c, 0);
             }
 
             return v;
@@ -107,8 +158,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] += b;
             }
 
@@ -119,8 +171,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] -= b;
             }
 
@@ -131,8 +184,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)b.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] = a - v.AllComponents()[c];
             }
 
@@ -143,8 +197,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] *= b;
             }
 
@@ -155,8 +210,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] *= b;
             }
 
@@ -167,8 +223,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] /= b;
             }
 
@@ -179,8 +236,9 @@ namespace FireworkToolkit.Templates
         {
             AVector v = (AVector)b.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for(int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] = a / v.AllComponents()[c];
             }
 

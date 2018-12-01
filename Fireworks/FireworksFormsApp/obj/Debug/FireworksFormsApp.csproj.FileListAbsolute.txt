@@ -1,0 +1,13 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\bin\Debug\FireworksFormsApp.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\bin\Debug\FireworksFormsApp.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\bin\Debug\FireworksFormsApp.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\bin\Debug\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\bin\Debug\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.FireworksFrame.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.Properties.Resources.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksFormsApp\obj\Debug\FireworksFormsApp.pdb

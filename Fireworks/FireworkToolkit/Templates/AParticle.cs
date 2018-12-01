@@ -1,4 +1,5 @@
 ﻿using FireworkToolkit.Interfaces;
+using FireworkToolkit.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -40,17 +41,17 @@ namespace FireworkToolkit.Templates
         /// <summary>
         /// The color that the particle uses when the Show() method is invoked
         /// </summary>
-        public Color color { get; set; } = new Color();
+        public Color Color { get; set; } = new Color();
 
         /// <summary>
         /// The brush used when the Show() method is invoked
         /// </summary>
-        public Brush brush { get; protected set; }
+        public Brush Brush { get; protected set; }
 
         /// <summary>
         /// The pen used when the Show() method is invoked
         /// </summary>
-        public Pen pen { get; protected set; }
+        public Pen Pen { get; protected set; }
 
         /// <summary>
         /// The random number generator used by this instance
@@ -59,23 +60,94 @@ namespace FireworkToolkit.Templates
 
         #endregion
 
+        #region Constructors
+
+        /// <summary>
+        /// Creates a new particle with the given parameters
+        /// </summary>
+        /// <param name="degree">the degree of the vector to use</param>
+        public AParticle(int degree = 2)
+        {
+            List<char> components = new List<char>(degree);
+            for (int i = 1; i <= degree; i++)
+                components.Add((char)i);
+
+            Position = PhysicsLib.GetZeroVector(components.ToArray());
+            Velocity = PhysicsLib.GetZeroVector(components.ToArray());
+            Acceleration = PhysicsLib.GetZeroVector(components.ToArray());
+
+            Color = Color.FromArgb(255, rng.Next(0, 255), rng.Next(0, 255), rng.Next(0, 255));
+
+            Brush = new SolidBrush(Color);
+            Pen = new Pen((SolidBrush)(Brush.Clone()), 1);
+        }
+
+        /// <summary>
+        /// Creates a new particle with the given parameters
+        /// </summary>
+        /// <param name="color">color to use</param>
+        /// <param name="degree">the degree of the vector to use</param>
+        public AParticle(Color color, int degree = 2)
+        {
+            List<char> components = new List<char>(degree);
+            for (int i = 1; i <= degree; i++)
+                components.Add((char)i);
+
+            Position = PhysicsLib.GetZeroVector(components.ToArray());
+            Velocity = PhysicsLib.GetZeroVector(components.ToArray());
+            Acceleration = PhysicsLib.GetZeroVector(components.ToArray());
+            Color = color;
+            Brush = new SolidBrush(Color);
+            Pen = new Pen((SolidBrush)(Brush.Clone()), 1);
+        }
+
+        /// <summary>
+        /// Creates a new particle with the given parameters
+        /// </summary>
+        /// <param name="pos">Position vector to use</param>
+        /// <param name="vel">Velocity vector to use</param>
+        /// <param name="acc">Acceleration vector to use</param>
+        public AParticle(AVector pos, AVector vel = null, AVector acc = null)
+        {
+            Position = pos;
+            Velocity = vel ?? PhysicsLib.GetZeroVector(pos.AllComponents().Keys.ToArray());
+            Acceleration = acc ?? PhysicsLib.GetZeroVector(pos.AllComponents().Keys.ToArray());
+
+            Color = Color.FromArgb(255, rng.Next(0, 255), rng.Next(0, 255), rng.Next(0, 255));
+
+            Brush = new SolidBrush(Color);
+            Pen = new Pen((SolidBrush)(Brush.Clone()), 1);
+        }
+
+        /// <summary>
+        /// Creates a new particle with the given parameters
+        /// </summary>
+        /// <param name="pos">Position vector to use</param>
+        /// <param name="vel">Velocity vector to use</param>
+        /// <param name="acc">Acceleration vector to use</param>
+        /// <param name="color">Color to use</param>
+        public AParticle(Color color, AVector pos, AVector vel = null, AVector acc = null)
+        {
+            Position = pos;
+            Velocity = vel ?? PhysicsLib.GetZeroVector(pos.AllComponents().Keys.ToArray());
+            Acceleration = acc ?? PhysicsLib.GetZeroVector(pos.AllComponents().Keys.ToArray());
+            Color = color;
+
+            Brush = new SolidBrush(Color);
+            Pen = new Pen((SolidBrush)(Brush.Clone()), 1);
+        }
+
+        #endregion
+
         #region Methods
 
         public virtual void ApplyForce(AVector force)
         {
-            Acceleration += force / Mass;
+            AVector temp = force; /// Mass;
+            Acceleration += temp;
         }
 
-        /// <summary>
-        /// Draws the particle on the canvas supplied
-        /// </summary>
-        /// <param name="g">Graphics object to use</param>
-        public virtual void Show(Graphics g)
-        {
-            g.FillEllipse(brush,
-                new Rectangle((int)Math.Round(Position.X), (int)Math.Round(Position.Y),
-                4, 4));
-        }
+        public abstract void Show(Graphics g);
 
         /// <summary>
         /// Steps the particle through n seconds of movement, resets the acceleration after 1 second.
@@ -89,6 +161,11 @@ namespace FireworkToolkit.Templates
                 Position += Velocity;
                 Acceleration *= 0;
             }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + " Position: " + Position + " Velocity: " + Velocity + " Acceleration: " + Acceleration;
         }
 
         #endregion

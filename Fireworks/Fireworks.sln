@@ -7,6 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fireworks", "Fireworks\Fire
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteEditor", "..\GameMakingKit\SpriteEditor\SpriteEditor.csproj", "{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireworkToolkit", "FireworkToolkit\FireworkToolkit.csproj", "{2D0566D9-EEB1-455F-9527-475FAD53AD4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireworksFormsApp", "FireworksFormsApp\FireworksFormsApp.csproj", "{6EC4EE38-F94F-40F9-82EF-90A0ECCECC26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Troubleshooting", "Troubleshooting", "{91C068E5-A902-4C20-885B-28032A7EF2BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireworkInheritanceTestbench", "FireworkInheritanceTestbench\FireworkInheritanceTestbench.csproj", "{72E6A6F2-48A4-4FFC-A6CA-1D5B4D90C758}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireworkUpdateInheritanceTestbench", "FireworkUpdateInheritanceTestbench\FireworkUpdateInheritanceTestbench.csproj", "{7E8A07B7-12A6-4C3A-86CE-C5805F5DA558}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{1EA5C1C1-BE60-489B-BF64-48DF52BE4849}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +33,34 @@ Global
 		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94E9BCF3-5EBC-4E73-96E0-6F4401BB6D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D0566D9-EEB1-455F-9527-475FAD53AD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D0566D9-EEB1-455F-9527-475FAD53AD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D0566D9-EEB1-455F-9527-475FAD53AD4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D0566D9-EEB1-455F-9527-475FAD53AD4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC4EE38-F94F-40F9-82EF-90A0ECCECC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC4EE38-F94F-40F9-82EF-90A0ECCECC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC4EE38-F94F-40F9-82EF-90A0ECCECC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC4EE38-F94F-40F9-82EF-90A0ECCECC26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E6A6F2-48A4-4FFC-A6CA-1D5B4D90C758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E6A6F2-48A4-4FFC-A6CA-1D5B4D90C758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E6A6F2-48A4-4FFC-A6CA-1D5B4D90C758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E6A6F2-48A4-4FFC-A6CA-1D5B4D90C758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E8A07B7-12A6-4C3A-86CE-C5805F5DA558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E8A07B7-12A6-4C3A-86CE-C5805F5DA558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E8A07B7-12A6-4C3A-86CE-C5805F5DA558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E8A07B7-12A6-4C3A-86CE-C5805F5DA558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EA5C1C1-BE60-489B-BF64-48DF52BE4849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA5C1C1-BE60-489B-BF64-48DF52BE4849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA5C1C1-BE60-489B-BF64-48DF52BE4849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA5C1C1-BE60-489B-BF64-48DF52BE4849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72E6A6F2-48A4-4FFC-A6CA-1D5B4D90C758} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
+		{7E8A07B7-12A6-4C3A-86CE-C5805F5DA558} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
+		{1EA5C1C1-BE60-489B-BF64-48DF52BE4849} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8AC8AA7-2F2A-4B0A-8567-532C5C9ABEDD}

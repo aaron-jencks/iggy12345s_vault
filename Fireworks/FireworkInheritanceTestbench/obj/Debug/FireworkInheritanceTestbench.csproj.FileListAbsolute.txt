@@ -1,0 +1,10 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\bin\Debug\FireworkInheritanceTestbench.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\bin\Debug\FireworkInheritanceTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\bin\Debug\FireworkInheritanceTestbench.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\bin\Debug\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\bin\Debug\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\obj\Debug\FireworkInheritanceTestbench.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\obj\Debug\FireworkInheritanceTestbench.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\obj\Debug\FireworkInheritanceTestbench.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\obj\Debug\FireworkInheritanceTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkInheritanceTestbench\obj\Debug\FireworkInheritanceTestbench.pdb
