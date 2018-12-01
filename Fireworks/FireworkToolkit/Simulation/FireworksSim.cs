@@ -56,7 +56,7 @@ namespace FireworkToolkit.Simulation
         /// <summary>
         /// How often the updating thread will update all of the fireworks in ms
         /// </summary>
-        public static int RefreshRate { get; set; } = 10;   // refresh delay in ms
+        public static int RefreshRate { get; set; } = 33;   // refresh delay in ms
 
         /// <summary>
         /// The probability in % (0-1) of how likely that a firework will be generated is.
@@ -140,7 +140,7 @@ namespace FireworkToolkit.Simulation
                                 Fireworks.Add(new Firework2D(
                                     new Vector2D(rng.Next(Width), Height),
                                     new Vector2D(0, rng.Next(MaxVel, MinVel))));
-                            else if (r > 0.1)
+                            else if (r > 0.1 && Sprites.Count > 0)
                                 Fireworks.Add(new SpriteFirework2D(
                                     new Vector2D(rng.Next(Width), Height),
                                     new Vector2D(0, rng.Next(MaxVel, MinVel)),
@@ -163,7 +163,7 @@ namespace FireworkToolkit.Simulation
 
         public void Start()
         {
-            if (!painter.IsAlive)
+            if (painter == null || !painter.IsAlive)
             {
                 isExitting = false;
                 painter = new Thread(ExecutionModule);
@@ -286,7 +286,7 @@ namespace FireworkToolkit.Simulation
 
         #endregion
 
-        public void Show(Graphics g)
+        public void Show(System.Drawing.Graphics g)
         {
             lock (Fireworks)
                 foreach (AFirework f in Fireworks)

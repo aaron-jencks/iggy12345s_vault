@@ -39,18 +39,7 @@ namespace FireworksFormsApp
 
         #region Properties
 
-        /// <summary>
-        /// The simulation housed within this form
-        /// </summary>
-        public FireworksSim Simulation { get; private set; } = new FireworksSim();
-
-        private Random rng = new Random();
-
-        private bool canDraw = false;
-        private bool isDrawing = false;
-
-        private Point mouseLocation;
-        private bool previewMode = false;
+        public bool previewMode { get; private set; } = false;
 
         #endregion
 
@@ -61,14 +50,11 @@ namespace FireworksFormsApp
 
             InitializeComponent();
 
-            Setup();
         }
 
         public FireworksFrame(Rectangle Bounds)
         {
             InitializeComponent();
-
-            Setup();
 
             this.Bounds = Bounds;
         }
@@ -76,8 +62,6 @@ namespace FireworksFormsApp
         public FireworksFrame(IntPtr PreviewWndHandle)
         {
             InitializeComponent();
-
-            Setup();
 
             // Set the preview window as the parent of this window
             SetParent(this.Handle, PreviewWndHandle);
@@ -99,118 +83,31 @@ namespace FireworksFormsApp
 
         #region Methods
 
-        /// <summary>
-        /// Sets up the canvasbox
-        /// </summary>
-        private void Setup()
+        private void asXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Sets up the background color of the canvas.
-            canvasBox.Image = new Bitmap(Width, Height);
-            canvasBox.BackColor = Color.Black;
-            canvasBox.Invalidate();
-
-            Simulation.UpdateEvent += Simulation_UpdateEvent;
-
-            //ExecutionModule();
+            fireworksSimControl1.Simulation.SaveAssets();
         }
 
-        /// <summary>
-        /// Triggered when the simulation updates
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Simulation_UpdateEvent(object sender, EventArgs e)
+        private void fromXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            canvasBox.Invalidate();
+            fireworksSimControl1.Simulation.LoadAssets(false);
         }
 
-        /// <summary>
-        /// Draws all of the particle onto the screen
-        /// </summary>
-        private void DrawParticles()
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (canDraw)
-            {
-                isDrawing = true;
-                lock (canvasBox.Image)
-                {
-                    using (Graphics g = Graphics.FromImage(canvasBox.Image))
-                    {
-                        Image image = (Image)canvasBox.Image.Clone();
-
-                        g.Clear(Color.Black);
-
-
-                        Bitmap bmp = new Bitmap(image.Width, image.Height);
-
-                        //create a color matrix object  
-                        ColorMatrix matrix = new ColorMatrix();
-
-                        //set the opacity  
-                        matrix.Matrix33 *= 0.95f;
-                        if (matrix.Matrix33 < 0.75)
-                            matrix.Matrix33 = 0;
-
-                        //create image attributes  
-                        ImageAttributes attributes = new ImageAttributes();
-
-                        //set the color(opacity) of the image  
-                        attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-
-                        //now draw the image  
-                        g.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
-
-
-                        Simulation.Show(g);
-
-                        g.Dispose();
-                    }
-                    canvasBox.Invalidate();
-                }
-            }
-            isDrawing = false;
+            fireworksSimControl1.Simulation.ClearAssets();
         }
 
-        /// <summary>
-        /// Triggered when the form loads
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FireworksFrame_Load(object sender, EventArgs e)
+        private void FireworksFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Cursor.Hide();
-            TopMost = false;
+            fireworksSimControl1.Simulation.Stop();
+        }
 
-            Simulation.Width = Width;
-            Simulation.Height = Height;
+        private void allSpritesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
-            while (isDrawing) ;
-
-            canDraw = false;
-            // Resizes the drawing canvas to fill the window.
-            canvasBox.Left = 0;
-            canvasBox.Top = 0;
-            canvasBox.Width = this.Size.Width;
-            canvasBox.Height = this.Size.Height;
-
-            lock (canvasBox.Image)
-                canvasBox.Image = new Bitmap(Width, Height);
-
-            canvasBox.Invalidate();
-
-            canDraw = true;
         }
 
         #endregion
-
-        private void FireworksFrame_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Simulation.Stop();
-        }
-
-        private void canvasBox_Paint(object sender, PaintEventArgs e)
-        {
-            DrawParticles();
-        }
     }
 }

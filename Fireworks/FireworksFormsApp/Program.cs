@@ -16,7 +16,9 @@ namespace FireworksFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FireworksFrame());
+            FireworksFrame frame = new FireworksFrame();
+            frame.fireworksSimControl1.Simulation.Start();
+            Application.Run(frame);
         }
     }
 }

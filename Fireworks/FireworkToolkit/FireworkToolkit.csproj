@@ -46,6 +46,12 @@
     <Compile Include="2D\Firework2D.cs" />
     <Compile Include="2D\Particle2D.cs" />
     <Compile Include="2D\SpriteFirework2D.cs" />
+    <Compile Include="Graphics\FormsComponents\FireworksSimControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Graphics\FormsComponents\FireworksSimControl.Designer.cs">
+      <DependentUpon>FireworksSimControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphics\Sprite.cs" />
     <Compile Include="Interfaces\IFilable.cs" />
     <Compile Include="Interfaces\IFirework.cs" />
@@ -61,6 +67,11 @@
     <Compile Include="Templates\AVector.cs" />
     <Compile Include="Vectors\UnlimitedVector.cs" />
     <Compile Include="Vectors\Vector2D.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Graphics\FormsComponents\FireworksSimControl.resx">
+      <DependentUpon>FireworksSimControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

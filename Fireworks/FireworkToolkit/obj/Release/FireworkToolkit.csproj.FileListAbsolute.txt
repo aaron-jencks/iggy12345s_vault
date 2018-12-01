@@ -1,2 +1,8 @@
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.csprojAssemblyReference.cache
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\bin\Release\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\bin\Release\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Graphics.FormsComponents.FireworksSimControl.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.pdb
