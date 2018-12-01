@@ -27,5 +27,19 @@ namespace FireworkToolkit
                 pairs.Add(c, 0);
             return new UnlimitedVector(pairs); 
         }
+
+        public static int GetLargestStartingVelocity(int windowHeight, int numSteps = 100)
+        {
+            double g = Gravity2D.Y;
+            return (int)((windowHeight - sumPrev(numSteps) * g) / numSteps);
+
+            int sumPrev(int interval)
+            {
+                int sum = 0;
+                for (int i = 0; i <= interval; i++)
+                    sum += i;
+                return sum;
+            }
+        }
     }
 }

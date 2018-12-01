@@ -38,10 +38,11 @@ namespace FireworkToolkit.Templates
 
         #endregion
 
+        private Color pcolor;
         /// <summary>
         /// The color that the particle uses when the Show() method is invoked
         /// </summary>
-        public Color Color { get; set; } = new Color();
+        public Color Color { get => pcolor; set => setColor(value); }
 
         /// <summary>
         /// The brush used when the Show() method is invoked
@@ -140,6 +141,13 @@ namespace FireworkToolkit.Templates
         #endregion
 
         #region Methods
+
+        private void setColor(Color c)
+        {
+            pcolor = c;
+            Brush = new SolidBrush(c);
+            Pen = new Pen(Brush);
+        }
 
         public virtual void ApplyForce(AVector force)
         {

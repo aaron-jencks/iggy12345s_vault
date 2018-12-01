@@ -14,6 +14,7 @@ using System.Drawing.Imaging;
 using FireworkToolkit.Vectors;
 using FireworkToolkit.Templates;
 using FireworkToolkit.SpriteGraphics;
+using FireworkToolkit;
 
 namespace FireworksFormsApp
 {
@@ -40,9 +41,14 @@ namespace FireworksFormsApp
         private List<AFirework> firework { get; set; } = new List<AFirework>();
         private List<Sprite> sprites { get; set; } = new List<Sprite>();
         private static int refresh = 10;   // refresh delay in ms
-        private static double launchProb = 0.05;
-        private static int minVel = -5;
-        private static int maxVel = -20;
+        public static double launchProb = 0.05;
+        public static int minVel { get; protected set; } = -5;
+        public static int maxVel { get; protected set; } = -20;
+
+        /// <summary>
+        /// Pauses the simulation
+        /// </summary>
+        public bool isPaused { get; set; } = false;
 
         private Thread painter;
         private Random rng = new Random();
@@ -193,6 +199,7 @@ namespace FireworksFormsApp
         {
             while (!isExitting)
             {
+
                 Thread.Sleep(refresh);
 
                 if (rng.NextDouble() <= launchProb)
@@ -226,7 +233,9 @@ namespace FireworksFormsApp
         private void FireworksFrame_Load(object sender, EventArgs e)
         {
             //Cursor.Hide();
-            TopMost = true;
+            TopMost = false;
+
+            maxVel = PhysicsLib.GetLargestStartingVelocity((int)(-1 * Height * 0.9), 100);
 
             while (isDrawing) ;
 
