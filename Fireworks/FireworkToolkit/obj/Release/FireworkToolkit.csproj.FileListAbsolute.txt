@@ -6,3 +6,5 @@ G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\Fire
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.csproj.GenerateResource.cache
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.dll
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Graphics.FormsComponents.SpriteControl.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Graphics.FormsComponents.SpriteManager.resources

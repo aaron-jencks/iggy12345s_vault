@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +52,18 @@
     </Compile>
     <Compile Include="Graphics\FormsComponents\FireworksSimControl.Designer.cs">
       <DependentUpon>FireworksSimControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\FormsComponents\SpriteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Graphics\FormsComponents\SpriteControl.Designer.cs">
+      <DependentUpon>SpriteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\FormsComponents\SpriteManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphics\FormsComponents\SpriteManager.Designer.cs">
+      <DependentUpon>SpriteManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphics\Sprite.cs" />
     <Compile Include="Interfaces\IFilable.cs" />
@@ -71,6 +84,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Graphics\FormsComponents\FireworksSimControl.resx">
       <DependentUpon>FireworksSimControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphics\FormsComponents\SpriteControl.resx">
+      <DependentUpon>SpriteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphics\FormsComponents\SpriteManager.resx">
+      <DependentUpon>SpriteManager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
