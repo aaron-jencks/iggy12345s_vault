@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace FireworkToolkit.Simulation
 {
@@ -191,6 +194,11 @@ namespace FireworkToolkit.Simulation
 
         #region Asset Control
 
+        public ICollection<IFilable> GetAllAssets()
+        {
+            return Sprites.Cast<IFilable>().ToList();
+        }
+
         public void AddFirework(AFirework firework)
         {
             Fireworks.Add(firework);
@@ -215,22 +223,53 @@ namespace FireworkToolkit.Simulation
 
         public void SaveAssets(string filename)
         {
-            throw new NotImplementedException();
+            XElement doc = new XElement("root");
+            foreach (IFilable f in GetAllAssets())
+                doc.Add(f.GetElement());
+            doc.Save(filename);
         }
 
         public void SaveAssets()
         {
-            throw new NotImplementedException();
+            SaveFileDialog wizard = new SaveFileDialog();
+            wizard.AddExtension = true;
+            wizard.Filter = "Xml | *.xml";
+            wizard.DefaultExt = "xml";
+            wizard.Title = "Select a file to save to";
+            wizard.ShowDialog();
+
+            if(wizard.FileName != "")
+                SaveAssets(wizard.FileName);
+
+            wizard.Dispose();
         }
 
         public void LoadAssets(string filename)
         {
-            throw new NotImplementedException();
+            XElement doc = XElement.Load(filename);
+            foreach(XElement child in doc.Elements())
+                switch(child.Name.ToString())
+                {
+                    case "Sprite":
+                        Sprite s = new Sprite();
+                        s.FromElement(child);
+                        AddSprite(s);
+                        break;
+                }
         }
 
         public void LoadAssets()
         {
-            throw new NotImplementedException();
+            OpenFileDialog wizard = new OpenFileDialog();
+            wizard.Filter = "Xml | *.xml";
+            wizard.Title = "Select an attribute file to open";
+            wizard.RestoreDirectory = true;
+            wizard.ShowDialog();
+
+            if (wizard.FileName != "")
+                LoadAssets(wizard.FileName);
+
+            wizard.Dispose();
         }
 
         #endregion
