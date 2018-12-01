@@ -151,6 +151,18 @@ namespace FireworkToolkit.Templates
             return v;
         }
 
+        public static AVector operator *(double b, AVector a)
+        {
+            AVector v = (AVector)a.Clone();
+
+            foreach (char c in v.AllComponents().Keys)
+            {
+                v.AllComponents()[c] *= b;
+            }
+
+            return v;
+        }
+
         public static AVector operator /(AVector a, double b)
         {
             AVector v = (AVector)a.Clone();
