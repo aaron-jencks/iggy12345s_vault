@@ -55,6 +55,14 @@ namespace FireworkToolkit.SpriteGraphics
         #region Constructors
 
         /// <summary>
+        /// Creates an empty sprite, shouldn't be used unless loading attributes from a file
+        /// </summary>
+        public Sprite()
+        {
+
+        }
+
+        /// <summary>
         /// Creates a new sprite from the given filename and the default mask color of black
         /// </summary>
         /// <param name="filename">The file to load in</param>
@@ -180,6 +188,7 @@ namespace FireworkToolkit.SpriteGraphics
             foreach (XElement c in e.Element("Data").Elements())
                 if (c.Name == "Coordinate")
                     coordinates.Add(new Tuple<int, int>((int)c.Attribute("X"), (int)c.Attribute("Y")));
+            isConverted = true;
         }
 
         #endregion
