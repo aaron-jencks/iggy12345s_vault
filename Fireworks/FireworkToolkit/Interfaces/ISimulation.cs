@@ -47,6 +47,12 @@ namespace FireworkToolkit.Interfaces
         #region Asset Control
 
         /// <summary>
+        /// Finds all assets within this simulation
+        /// </summary>
+        /// <returns>Returns a collection of all assets in the simulation</returns>
+        ICollection<IFilable> GetAllAssets();
+
+        /// <summary>
         /// Adds a firework manually to the list of fireworks in the simulation
         /// </summary>
         /// <param name="firework">firework to add</param>
