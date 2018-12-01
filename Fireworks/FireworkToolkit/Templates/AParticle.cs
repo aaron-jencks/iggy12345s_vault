@@ -155,7 +155,7 @@ namespace FireworkToolkit.Templates
             Acceleration += temp;
         }
 
-        public abstract void Show(Graphics g);
+        public abstract void Show(System.Drawing.Graphics g);
 
         /// <summary>
         /// Steps the particle through n seconds of movement, resets the acceleration after 1 second.

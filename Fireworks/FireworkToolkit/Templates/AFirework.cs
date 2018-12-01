@@ -78,7 +78,7 @@ namespace FireworkToolkit.Templates
         /// the firework has yet to explode.
         /// </summary>
         /// <param name="g">The graphics object to use to draw</param>
-        public override void Show(Graphics g)
+        public override void Show(System.Drawing.Graphics g)
         {
             while (Busy) ;
             Busy = true;

@@ -113,6 +113,6 @@ namespace FireworkToolkit.Interfaces
         /// Draws all of the fireworks given a graphics object
         /// </summary>
         /// <param name="g">Graphics object to use</param>
-        void Show(Graphics g);
+        void Show(System.Drawing.Graphics g);
     }
 }

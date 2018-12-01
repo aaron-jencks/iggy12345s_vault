@@ -29,6 +29,6 @@ namespace FireworkToolkit.Interfaces
         /// Draws the particle onto the screen using the graphics object specified
         /// </summary>
         /// <param name="g">The graphics object to use</param>
-        void Show(Graphics g);
+        void Show(System.Drawing.Graphics g);
     }
 }

@@ -47,7 +47,7 @@ namespace FireworkToolkit._2D
             Pen = new Pen((Brush)Brush.Clone(), 1);
         }
 
-        public override void Show(Graphics g)
+        public override void Show(System.Drawing.Graphics g)
         {
             g.FillEllipse(Brush,
                 new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),

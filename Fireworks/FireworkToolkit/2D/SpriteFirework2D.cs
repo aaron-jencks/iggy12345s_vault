@@ -69,7 +69,7 @@ namespace FireworkToolkit._2D
                 {
 
                     List<Tuple<int, int>> coords = sprite.Coordinates;  // Can take a while the first time that it executes
-                    qty = (int)(coords.Count * 0.4);
+                    qty = (int)(coords.Count * (rng.NextDouble() * 0.2 + 0.1));
                     Particles.Clear();
 
                     for (int i = 0; i < qty; i++)
@@ -103,7 +103,7 @@ namespace FireworkToolkit._2D
             });
         }
 
-        public override void Show(Graphics g)
+        public override void Show(System.Drawing.Graphics g)
         {
             if (!Exploded)
                 g.FillEllipse(Brush,

@@ -66,7 +66,7 @@ namespace FireworkToolkit._2D
             }
         }
 
-        public override void Show(Graphics g)
+        public override void Show(System.Drawing.Graphics g)
         {
             if (!Exploded)
                 g.FillEllipse(Brush,
