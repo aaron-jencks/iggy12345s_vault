@@ -45,7 +45,7 @@ namespace FireworkToolkit._2D
                     ExplosionAlpha -= ParticleDiminishRate;
                     foreach (AParticle p in Particles)
                     {
-                        Console.WriteLine(p);
+                        //Console.WriteLine(p);
                         p.ApplyForce(PhysicsLib.Gravity2D);
                         p.Velocity *= 0.95;
                         p.Update();
@@ -95,7 +95,7 @@ namespace FireworkToolkit._2D
                         double yVel = (rng.NextDouble() * ExplosionMag) * Math.Sin(angle);
 
                         Particles.Add(new Particle2D(Color,
-                        (Vector2D)Position.Clone(),
+                        new Vector2D(((Vector2D)Position).X + targetX, ((Vector2D)Position).Y - targetY),
                         new Vector2D(xVel, yVel)));
                     }
                 }
