@@ -15,6 +15,7 @@ using FireworkToolkit.Vectors;
 using FireworkToolkit.Templates;
 using FireworkToolkit.SpriteGraphics;
 using FireworkToolkit;
+using FireworkToolkit.Simulation;
 
 namespace FireworksFormsApp
 {
@@ -38,23 +39,14 @@ namespace FireworksFormsApp
 
         #region Properties
 
-        private List<AFirework> firework { get; set; } = new List<AFirework>();
-        private List<Sprite> sprites { get; set; } = new List<Sprite>();
-        private static int refresh = 10;   // refresh delay in ms
-        public static double launchProb = 0.05;
-        public static int minVel { get; protected set; } = -5;
-        public static int maxVel { get; protected set; } = -20;
-
         /// <summary>
-        /// Pauses the simulation
+        /// The simulation housed within this form
         /// </summary>
-        public bool isPaused { get; set; } = false;
+        public FireworksSim Simulation { get; private set; } = new FireworksSim();
 
-        private Thread painter;
         private Random rng = new Random();
 
         private bool canDraw = false;
-        private bool isExitting = false;
         private bool isDrawing = false;
 
         private Point mouseLocation;
@@ -107,6 +99,9 @@ namespace FireworksFormsApp
 
         #region Methods
 
+        /// <summary>
+        /// Sets up the canvasbox
+        /// </summary>
         private void Setup()
         {
             // Sets up the background color of the canvas.
@@ -114,32 +109,19 @@ namespace FireworksFormsApp
             canvasBox.BackColor = Color.Black;
             canvasBox.Invalidate();
 
-            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pikachu Outline.bmp", 1));
-            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Pachirisu Outline.bmp", 4));
-            //sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\LaurenText.bmp", 2));
-            sprites.Add(new Sprite(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\BongoCat.bmp", 2));
-
-            painter = new Thread(ExecutionModule);
-            painter.Start();
+            Simulation.UpdateEvent += Simulation_UpdateEvent;
 
             //ExecutionModule();
         }
 
         /// <summary>
-        /// Updates all of the particles in the collection
+        /// Triggered when the simulation updates
         /// </summary>
-        private void UpdateParticles()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Simulation_UpdateEvent(object sender, EventArgs e)
         {
-            lock (firework)
-            {
-                for (int i = firework.Count - 1; i >= 0; i--)
-                {
-                    if (firework[i].Done())
-                        firework.RemoveAt(i);
-                    else
-                        firework[i].Update();
-                }
-            }
+            canvasBox.Invalidate();
         }
 
         /// <summary>
@@ -179,9 +161,7 @@ namespace FireworksFormsApp
                         g.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
 
 
-                        lock (firework)
-                            foreach (AFirework f in firework)
-                                f.Show(g);
+                        Simulation.Show(g);
 
                         g.Dispose();
                     }
@@ -189,40 +169,6 @@ namespace FireworksFormsApp
                 }
             }
             isDrawing = false;
-        }
-
-        /// <summary>
-        /// Controls painting the particles on the screen, time updates, etc...
-        /// Causes frames to happen.
-        /// </summary>
-        private void ExecutionModule()
-        {
-            while (!isExitting)
-            {
-
-                Thread.Sleep(refresh);
-
-                if (rng.NextDouble() <= launchProb)
-                    lock (firework)
-                    {
-                        double r = rng.NextDouble();
-
-                        if (r > 0.75)
-                            firework.Add(new Firework2D(
-                                new Vector2D(rng.Next(Width), Height),
-                                new Vector2D(0, rng.Next(maxVel, minVel))));
-                        else if (r > 0.1)
-                            firework.Add(new SpriteFirework2D(
-                                new Vector2D(rng.Next(Width), Height),
-                                new Vector2D(0, rng.Next(maxVel, minVel)),
-                                sprites[rng.Next(0, sprites.Count)]));
-
-                    }
-
-
-                UpdateParticles();
-                canvasBox.Invalidate();
-            }
         }
 
         /// <summary>
@@ -235,7 +181,8 @@ namespace FireworksFormsApp
             //Cursor.Hide();
             TopMost = false;
 
-            maxVel = PhysicsLib.GetLargestStartingVelocity((int)(-1 * Height * 0.9), 100);
+            Simulation.Width = Width;
+            Simulation.Height = Height;
 
             while (isDrawing) ;
 
@@ -258,7 +205,7 @@ namespace FireworksFormsApp
 
         private void FireworksFrame_FormClosed(object sender, FormClosedEventArgs e)
         {
-            isExitting = true;
+            Simulation.Stop();
         }
 
         private void canvasBox_Paint(object sender, PaintEventArgs e)
