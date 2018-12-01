@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using FireworkToolkit.Templates;
 
 namespace FireworkToolkit.Interfaces
 {
@@ -22,7 +23,7 @@ namespace FireworkToolkit.Interfaces
         /// Applies a force to a particle in the given magnitude and direction
         /// </summary>
         /// <param name="force">Force vector to apply</param>
-        void ApplyForce(IVector force);
+        void ApplyForce(AVector force);
 
         /// <summary>
         /// Draws the particle onto the screen using the graphics object specified
