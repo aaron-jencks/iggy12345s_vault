@@ -1,0 +1,10 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\bin\Debug\AssetControlTestbench.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\bin\Debug\AssetControlTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\bin\Debug\AssetControlTestbench.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\bin\Debug\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\bin\Debug\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\obj\Debug\AssetControlTestbench.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\obj\Debug\AssetControlTestbench.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\obj\Debug\AssetControlTestbench.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\obj\Debug\AssetControlTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\AssetControlTestbench\obj\Debug\AssetControlTestbench.pdb

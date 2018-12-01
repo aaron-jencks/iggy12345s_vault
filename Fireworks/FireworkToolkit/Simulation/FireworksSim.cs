@@ -199,6 +199,11 @@ namespace FireworkToolkit.Simulation
             return Sprites.Cast<IFilable>().ToList();
         }
 
+        public void ClearAssets()
+        {
+            Sprites.Clear();
+        }
+
         public void AddFirework(AFirework firework)
         {
             Fireworks.Add(firework);
@@ -229,6 +234,7 @@ namespace FireworkToolkit.Simulation
             doc.Save(filename);
         }
 
+        [STAThread]
         public void SaveAssets()
         {
             SaveFileDialog wizard = new SaveFileDialog();
@@ -244,8 +250,11 @@ namespace FireworkToolkit.Simulation
             wizard.Dispose();
         }
 
-        public void LoadAssets(string filename)
+        public void LoadAssets(string filename, bool clearOld = true)
         {
+            if (clearOld)
+                ClearAssets();
+
             XElement doc = XElement.Load(filename);
             foreach(XElement child in doc.Elements())
                 switch(child.Name.ToString())
@@ -258,7 +267,8 @@ namespace FireworkToolkit.Simulation
                 }
         }
 
-        public void LoadAssets()
+        [STAThread]
+        public void LoadAssets(bool clearOld = true)
         {
             OpenFileDialog wizard = new OpenFileDialog();
             wizard.Filter = "Xml | *.xml";
@@ -267,7 +277,7 @@ namespace FireworkToolkit.Simulation
             wizard.ShowDialog();
 
             if (wizard.FileName != "")
-                LoadAssets(wizard.FileName);
+                LoadAssets(wizard.FileName, clearOld);
 
             wizard.Dispose();
         }

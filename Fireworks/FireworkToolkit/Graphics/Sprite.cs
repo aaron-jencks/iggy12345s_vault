@@ -48,7 +48,15 @@ namespace FireworkToolkit.SpriteGraphics
         /// </summary>
         public List<Tuple<int, int>> Coordinates { get => getCoordinates(); }
 
+        /// <summary>
+        /// How far the pixels in the coordinates list should be multiplied by when creating the image
+        /// </summary>
         public double Zoom { get; set; } = 1;
+
+        /// <summary>
+        /// Name of the file that this sprite was initialized from
+        /// </summary>
+        public string Name { get; protected set; } = "";
 
         #endregion
 
@@ -69,6 +77,7 @@ namespace FireworkToolkit.SpriteGraphics
         /// <param name="convert">[optional] Specifies if the sprite should auto-convert upon initialization (true)</param>
         public Sprite(string filename, double zoom = 1, bool convert = true)
         {
+            Name = filename;
             Zoom = zoom;
             image = (Bitmap)Image.FromFile(filename);
             if (convert)
@@ -83,6 +92,7 @@ namespace FireworkToolkit.SpriteGraphics
         /// <param name="convert">[optional] Specifies if the sprite should auto-convert upon initialization (true)</param>
         public Sprite(string filename, Color maskColor, double zoom = 1, bool convert = true)
         {
+            Name = filename;
             Zoom = zoom;
             image = (Bitmap)Image.FromFile(filename);
             this.maskColor = maskColor;
@@ -154,9 +164,16 @@ namespace FireworkToolkit.SpriteGraphics
             foreach (Thread t in threads)
                 while (t.IsAlive) ;
 
+            List<Tuple<int, int>> nullIndices = new List<Tuple<int, int>>();
             foreach (Tuple<int, int> t in coordinates)
                 if (t == null)
-                    Console.WriteLine("There's something wrong here");
+                {
+                    Console.WriteLine("There's something wrong here, removing null coordinate...");
+                    nullIndices.Add(t);
+                }
+
+            foreach (Tuple<int, int> t in nullIndices)
+                coordinates.Remove(t);
 
             isConverted = true;
             isConverting = false;
@@ -166,7 +183,7 @@ namespace FireworkToolkit.SpriteGraphics
 
         public XElement GetElement()
         {
-            XElement result = new XElement("Sprite", new XAttribute("Zoom", Zoom));
+            XElement result = new XElement("Sprite", new XAttribute("Zoom", Zoom), new XAttribute("Name", Name));
 
             XElement data = new XElement("Data");
 
@@ -185,6 +202,7 @@ namespace FireworkToolkit.SpriteGraphics
         {
             coordinates.Clear();
             Zoom = (double)e.Attribute("Zoom");
+            Name = (string)e.Attribute("Name");
             foreach (XElement c in e.Element("Data").Elements())
                 if (c.Name == "Coordinate")
                     coordinates.Add(new Tuple<int, int>((int)c.Attribute("X"), (int)c.Attribute("Y")));
@@ -192,6 +210,11 @@ namespace FireworkToolkit.SpriteGraphics
         }
 
         #endregion
+
+        public override string ToString()
+        {
+            return base.ToString() + " " + Name;
+        }
 
         #endregion
     }

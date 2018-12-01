@@ -53,6 +53,11 @@ namespace FireworkToolkit.Interfaces
         ICollection<IFilable> GetAllAssets();
 
         /// <summary>
+        /// Wipes the assets from the current simulation
+        /// </summary>
+        void ClearAssets();
+
+        /// <summary>
         /// Adds a firework manually to the list of fireworks in the simulation
         /// </summary>
         /// <param name="firework">firework to add</param>
@@ -95,12 +100,12 @@ namespace FireworkToolkit.Interfaces
         /// (Must be xml)
         /// </summary>
         /// <param name="filename">file to open the assets from</param>
-        void LoadAssets(string filename);
+        void LoadAssets(string filename, bool clearOld = true);
 
         /// <summary>
         /// Launches an OpenFileDialog to aid in finding a file to open the assets from
         /// </summary>
-        void LoadAssets();
+        void LoadAssets(bool clearOld = true);
 
         #endregion
 

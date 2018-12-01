@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D0566D9-EEB1-455F-9527-475FAD53AD4D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FireworkToolkit</RootNamespace>
-    <AssemblyName>FireworkToolkit</AssemblyName>
+    <ProjectGuid>{2AEA695F-F9E3-4090-AF03-D224F111FE40}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AssetControlTestbench</RootNamespace>
+    <AssemblyName>AssetControlTestbench</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +36,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,24 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2D\Firework2D.cs" />
-    <Compile Include="2D\Particle2D.cs" />
-    <Compile Include="2D\SpriteFirework2D.cs" />
-    <Compile Include="Graphics\Sprite.cs" />
-    <Compile Include="Interfaces\IFilable.cs" />
-    <Compile Include="Interfaces\IFirework.cs" />
-    <Compile Include="Interfaces\IParticle.cs" />
-    <Compile Include="Interfaces\ISimulation.cs" />
-    <Compile Include="Interfaces\IVector.cs" />
-    <Compile Include="PhysicsLib.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulation\FireworksSim.cs" />
-    <Compile Include="Templates\AFirework.cs" />
-    <Compile Include="Templates\AParticle.cs" />
-    <Compile Include="Templates\ASpriteFirework.cs" />
-    <Compile Include="Templates\AVector.cs" />
-    <Compile Include="Vectors\UnlimitedVector.cs" />
-    <Compile Include="Vectors\Vector2D.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FireworkToolkit\FireworkToolkit.csproj">
+      <Project>{2d0566d9-eeb1-455f-9527-475fad53ad4d}</Project>
+      <Name>FireworkToolkit</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
