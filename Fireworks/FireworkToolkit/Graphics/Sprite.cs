@@ -1,17 +1,19 @@
-﻿using System;
+﻿using FireworkToolkit.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FireworkToolkit.SpriteGraphics
 {
     /// <summary>
     /// A class used to load images and mask them to get a set of coordinates used for the fireworks to draw pictures
     /// </summary>
-    public class Sprite
+    public class Sprite : IFilable
     {
 
         #region Properties
@@ -151,6 +153,36 @@ namespace FireworkToolkit.SpriteGraphics
             isConverted = true;
             isConverting = false;
         }
+
+        #region File IO
+
+        public XElement GetElement()
+        {
+            XElement result = new XElement("Sprite", new XAttribute("Zoom", Zoom));
+
+            XElement data = new XElement("Data");
+
+            foreach (Tuple<int, int> coord in getCoordinates())
+                if (coord != null)
+                    data.Add(new XElement("Coordinate", 
+                        new XAttribute("X", coord.Item1), 
+                        new XAttribute("Y", coord.Item2)));
+
+            result.Add(data);
+
+            return result;
+        }
+
+        public void FromElement(XElement e)
+        {
+            coordinates.Clear();
+            Zoom = (double)e.Attribute("Zoom");
+            foreach (XElement c in e.Element("Data").Elements())
+                if (c.Name == "Coordinate")
+                    coordinates.Add(new Tuple<int, int>((int)c.Attribute("X"), (int)c.Attribute("Y")));
+        }
+
+        #endregion
 
         #endregion
     }
