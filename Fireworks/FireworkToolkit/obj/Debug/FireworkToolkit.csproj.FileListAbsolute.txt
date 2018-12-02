@@ -1,10 +1,10 @@
-G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.csprojAssemblyReference.cache
-G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.csproj.CoreCompileInputs.cache
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\bin\Debug\FireworkToolkit.dll
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\bin\Debug\FireworkToolkit.pdb
-G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.dll
-G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.pdb
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Graphics.FormsComponents.FireworksSimControl.resources
-G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.csproj.GenerateResource.cache
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Graphics.FormsComponents.SpriteControl.resources
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Graphics.FormsComponents.SpriteManager.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.csprojAssemblyReference.cache

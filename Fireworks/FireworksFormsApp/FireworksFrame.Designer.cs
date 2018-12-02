@@ -28,27 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.fireworksSimControl1 = new FireworkToolkit.Graphics.FormsComponents.FireworksSimControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.allSpritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fromXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.allSpritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fireworksSimControl1 = new FireworkToolkit.Graphics.FormsComponents.FireworksSimControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // fireworksSimControl1
-            // 
-            this.fireworksSimControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fireworksSimControl1.Location = new System.Drawing.Point(0, 24);
-            this.fireworksSimControl1.Name = "fireworksSimControl1";
-            this.fireworksSimControl1.Size = new System.Drawing.Size(800, 426);
-            this.fireworksSimControl1.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -79,18 +71,33 @@
             this.spritesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.spritesToolStripMenuItem.Text = "Sprites";
             // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allSpritesToolStripMenuItem});
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+            this.editToolStripMenuItem1.Text = "Edit";
+            // 
+            // allSpritesToolStripMenuItem
+            // 
+            this.allSpritesToolStripMenuItem.Name = "allSpritesToolStripMenuItem";
+            this.allSpritesToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.allSpritesToolStripMenuItem.Text = "All Sprites";
+            this.allSpritesToolStripMenuItem.Click += new System.EventHandler(this.allSpritesToolStripMenuItem_Click);
+            // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.asXMLToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // asXMLToolStripMenuItem
             // 
             this.asXMLToolStripMenuItem.Name = "asXMLToolStripMenuItem";
-            this.asXMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asXMLToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.asXMLToolStripMenuItem.Text = "As XML";
             this.asXMLToolStripMenuItem.Click += new System.EventHandler(this.asXMLToolStripMenuItem_Click);
             // 
@@ -99,45 +106,38 @@
             this.loadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fromXMLToolStripMenuItem});
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.loadToolStripMenuItem.Text = "Import";
             // 
             // fromXMLToolStripMenuItem
             // 
             this.fromXMLToolStripMenuItem.Name = "fromXMLToolStripMenuItem";
-            this.fromXMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fromXMLToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.fromXMLToolStripMenuItem.Text = "From XML";
             this.fromXMLToolStripMenuItem.Click += new System.EventHandler(this.fromXMLToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.resetToolStripMenuItem.Text = "Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
-            // editToolStripMenuItem1
+            // fireworksSimControl1
             // 
-            this.editToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.allSpritesToolStripMenuItem});
-            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.editToolStripMenuItem1.Text = "Edit";
-            // 
-            // allSpritesToolStripMenuItem
-            // 
-            this.allSpritesToolStripMenuItem.Name = "allSpritesToolStripMenuItem";
-            this.allSpritesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.allSpritesToolStripMenuItem.Text = "All Sprites";
-            this.allSpritesToolStripMenuItem.Click += new System.EventHandler(this.allSpritesToolStripMenuItem_Click);
+            this.fireworksSimControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fireworksSimControl1.Location = new System.Drawing.Point(0, 0);
+            this.fireworksSimControl1.Name = "fireworksSimControl1";
+            this.fireworksSimControl1.Size = new System.Drawing.Size(800, 450);
+            this.fireworksSimControl1.TabIndex = 0;
             // 
             // FireworksFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.fireworksSimControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.fireworksSimControl1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FireworksFrame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

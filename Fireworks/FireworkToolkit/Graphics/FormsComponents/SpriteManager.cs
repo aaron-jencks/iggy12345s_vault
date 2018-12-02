@@ -159,8 +159,13 @@ namespace FireworkToolkit.Graphics.FormsComponents
 
         private void buttonRemoveSelected_Click(object sender, EventArgs e)
         {
+            List<object> temp = new List<object>(listBoxSprites.SelectedItems.Count);
+
             foreach (object o in listBoxSprites.SelectedItems)
-            {
+                temp.Add(o);
+
+            foreach(object o in temp)
+            { 
                 listBoxSprites.Items.Remove(o);
                 OnSpriteRemoved((Sprite)o);
             }

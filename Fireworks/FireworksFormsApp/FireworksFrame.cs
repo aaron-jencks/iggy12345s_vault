@@ -16,6 +16,7 @@ using FireworkToolkit.Templates;
 using FireworkToolkit.SpriteGraphics;
 using FireworkToolkit;
 using FireworkToolkit.Simulation;
+using FireworkToolkit.Graphics.FormsComponents;
 
 namespace FireworksFormsApp
 {
@@ -105,7 +106,8 @@ namespace FireworksFormsApp
 
         private void allSpritesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SpriteManager wizard = new SpriteManager(fireworksSimControl1.Simulation.GetAllSprites());
+            wizard.ShowDialog();
         }
 
         #endregion

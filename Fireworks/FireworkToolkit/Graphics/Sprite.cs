@@ -213,7 +213,7 @@ namespace FireworkToolkit.SpriteGraphics
 
         public override string ToString()
         {
-            return base.ToString() + " " + Name;
+            return Name.Split(new char[]{'/', '\\'}).Last();
         }
 
         #endregion

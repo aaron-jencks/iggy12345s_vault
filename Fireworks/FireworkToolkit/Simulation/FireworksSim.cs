@@ -199,6 +199,11 @@ namespace FireworkToolkit.Simulation
             return Sprites.Cast<IFilable>().ToList();
         }
 
+        public ICollection<Sprite> GetAllSprites()
+        {
+            return Sprites;
+        }
+
         public void ClearAssets()
         {
             Sprites.Clear();

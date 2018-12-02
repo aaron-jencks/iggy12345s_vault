@@ -26,7 +26,7 @@ namespace FireworkToolkit.Graphics.FormsComponents
 
             set
             {
-                sprite = value;
+                sprite = value ?? new Sprite();
                 OnValueChanged();
             }
         }
@@ -42,6 +42,8 @@ namespace FireworkToolkit.Graphics.FormsComponents
         public event ValueChangedEventHandler ValueChanged;
         protected virtual void OnValueChanged()
         {
+            numericUpDown1.Value = (decimal)sprite.Zoom;
+            textBox1.Text = sprite.Name;
             ValueChanged?.Invoke(this, new EventArgs());
         }
 
@@ -50,6 +52,12 @@ namespace FireworkToolkit.Graphics.FormsComponents
         public SpriteControl()
         {
             InitializeComponent();
+        }
+
+        public SpriteControl(Sprite initial)
+        {
+            InitializeComponent();
+            Value = initial;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
