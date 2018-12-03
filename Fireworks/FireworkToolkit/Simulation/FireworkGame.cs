@@ -81,7 +81,7 @@ namespace FireworkToolkit.Simulation
                     Vector2D v = (Vector2D)list[0].Position;
 
                     foreach (AFirework f in list)
-                        if (!f.Exploded && Math.Abs((int)f.Position.AllComponents()['X'] - p.X) < 10 && Math.Abs((int)f.Position.AllComponents()['Y'] - p.Y) < 10)
+                        if (!f.Exploded && Math.Abs((int)f.Position.AllComponents()['X'] - p.X) < 20 && Math.Abs((int)f.Position.AllComponents()['Y'] - p.Y) < 20)
                         {
                             f.Explode();
                             sum++;
@@ -167,13 +167,8 @@ namespace FireworkToolkit.Simulation
             foreach (XElement child in doc.Elements())
                 switch (child.Name.ToString())
                 {
-                    case "FireworksSim":
-                        Simulation.FromElement(child);
-                        break;
-                    case "Highscore":
-                        HighScore high = new HighScore();
-                        high.FromElement(child);
-                        SaveScore(high);
+                    case "FireworkGame":
+                        FromElement(child);
                         break;
                 }
         }
@@ -206,8 +201,7 @@ namespace FireworkToolkit.Simulation
         public virtual void SaveAssets(string filename)
         {
             XElement doc = new XElement("root");
-            foreach (IFilable f in GetAllAssets())
-                doc.Add(f.GetElement());
+            doc.Add(GetElement());
             doc.Save(filename);
         }
 
@@ -240,6 +234,7 @@ namespace FireworkToolkit.Simulation
         {
             isRunning = true;
             Simulation.RefreshRate = 50;
+            Simulation.LaunchProb = 0.05;
             Simulation.Start();
         }
 
@@ -249,11 +244,6 @@ namespace FireworkToolkit.Simulation
         public virtual void Stop()
         {
             isRunning = false;
-
-            // Stores the highscore if it qualifies
-            if (CheckScore(Score, NumberOfHighScoresToKeep))
-                SaveCurrentScore();
-
             Simulation.Stop();
         }
 
@@ -316,15 +306,32 @@ namespace FireworkToolkit.Simulation
 
         public virtual XElement GetElement()
         {
-            return Simulation.GetElement();
+            XElement doc = new XElement("FireworkGame");
+            foreach (IFilable f in GetAllAssets())
+                doc.Add(f.GetElement());
+            return doc;
         }
 
         public virtual void FromElement(XElement e)
         {
-            Stop();
-            isOver = false;
-            ResetScore();
-            Simulation.FromElement(e);
+            if (e.Name == "FireworkGame")
+            {
+                Stop();
+                isOver = false;
+                ResetScore();
+                foreach (XElement child in e.Elements())
+                    switch (child.Name.ToString())
+                    {
+                        case "FireworksSim":
+                            Simulation.FromElement(child);
+                            break;
+                        case "Highscore":
+                            HighScore high = new HighScore();
+                            high.FromElement(child);
+                            SaveScore(high);
+                            break;
+                    }
+            }
         }
 
         #endregion

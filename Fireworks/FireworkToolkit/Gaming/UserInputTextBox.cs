@@ -43,8 +43,8 @@ namespace FireworkToolkit.Gaming
         private void UserInputTextBox_Load(object sender, EventArgs e)
         {
             Caption.Left = (this.ClientSize.Width - Caption.Width) / 2;
-            textBox1.Top = Caption.Height;
-            button1.Top = Caption.Height + textBox1.Height;
+            textBox1.Top = Caption.Top + Caption.Height;
+            button1.Top = Caption.Top + Caption.Height + textBox1.Height;
             //ClientSize= new Size(ClientSize.Width, button1.Top + button1.Height);
         }
 

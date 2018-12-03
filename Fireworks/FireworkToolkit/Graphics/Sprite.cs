@@ -242,11 +242,13 @@ namespace FireworkToolkit.SpriteGraphics
         {
             while (isConverting) ;
 
-            Sprite result = new Sprite();
-            result.Name = Name;
-            result.Zoom = Zoom;
-            result.coordinates = Coordinates;
-            result.isConverted = isConverted;
+            Sprite result = new Sprite
+            {
+                Name = Name,
+                Zoom = Zoom,
+                coordinates = Coordinates,
+                isConverted = isConverted
+            };
 
             return result;
         }

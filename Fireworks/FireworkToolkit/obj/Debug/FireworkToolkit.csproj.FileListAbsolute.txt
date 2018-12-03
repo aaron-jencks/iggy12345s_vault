@@ -11,3 +11,4 @@ G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\Firewo
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Gaming.UserInputTextBox.resources
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Gaming.GameMenu.resources
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Gaming.MainMenu.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Debug\FireworkToolkit.Gaming.HighScoreTable.resources

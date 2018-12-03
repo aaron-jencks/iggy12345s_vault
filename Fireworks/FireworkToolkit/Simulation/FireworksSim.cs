@@ -358,6 +358,13 @@ namespace FireworkToolkit.Simulation
 
                 for (int i = 0; i < ((fCount < pCount) ? fCount : pCount); i++)
                 {
+                    int f = i;
+                    for (int j = f * adjustedIncrement; j < (f + 1) * adjustedIncrement; j++)
+                    {
+                        Fireworks[j].Show(g);
+                    }
+
+                    /*
                     Thread t = new Thread((object p) =>
                     {
                         int f = (int)p;
@@ -370,6 +377,7 @@ namespace FireworkToolkit.Simulation
                     t.Start(i);
 
                     tasks.Add(t);
+                    */
                 }
 
                 foreach (Thread t in tasks)

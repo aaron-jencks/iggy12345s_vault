@@ -83,5 +83,12 @@ namespace FireworkToolkit.Gaming
         {
             Game.Resume();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            HighScoreTable table = new HighScoreTable(Game.GetHighScores(Game.NumberOfHighScoresToKeep));
+            table.ShowDialog();
+            table.Dispose();
+        }
     }
 }

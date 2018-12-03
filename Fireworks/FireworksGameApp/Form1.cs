@@ -48,8 +48,8 @@ namespace FireworksGameApp
                     Console.WriteLine("Found an environment file, trying to load.");
                     XElement doc = XElement.Load(Environment.CurrentDirectory + "\\Environment.xml");
                     if (doc.HasElements)
-                        if (doc.Name == "FireworkGame" && doc.Attribute("Ver").Value == "1.0.1")
-                            Game.FromElement(doc.Element("FireworksSim"));
+                        if (doc.Name == "FireworkGameConfig" && doc.Attribute("Ver").Value == "1.0.1")
+                            Game.FromElement(doc.Element("FireworkGame"));
                 }
                 else
                     Console.WriteLine("Did not find an environment file, will create one this time.");
@@ -122,8 +122,8 @@ namespace FireworksGameApp
                     //Image i = (Image)canvasBox.Image.Clone();
                     using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(canvasBox.Image))
                     {
-                        //g.Clear(Color.Black);
-                        g.FillRectangle(new SolidBrush(Color.Black), g.ClipBounds);
+                        g.Clear(Color.Black);
+                        //g.FillRectangle(new SolidBrush(Color.Black), g.ClipBounds);
 
                         if (DrawFade)
                         {
@@ -178,7 +178,7 @@ namespace FireworksGameApp
             Console.WriteLine("Writing environment to the file");
             FileStream fs = new FileStream(Environment.CurrentDirectory + "\\Environment.xml", FileMode.Create);
             fs.Dispose();
-            XElement doc = new XElement("FireworkGame", new XAttribute("Ver", "1.0.1"));
+            XElement doc = new XElement("FireworkGameConfig", new XAttribute("Ver", "1.0.1"));
             doc.Add(Game.GetElement());
             doc.Save(Environment.CurrentDirectory + "\\Environment.xml");
         }
@@ -195,13 +195,20 @@ namespace FireworksGameApp
                 int count = Game.Click(PointToClient(Cursor.Position));
                 if (count > 0)
                     Game.IncreaseScore(count);
-                else if (Game.Score == 0)
+                else //if (Game.Score == 0)
                 {
                     Game.DecreaseLifeCount();
                     if(Game.IsOver())
                     {
                         Game.Stop();
-                        MessageBox.Show("Better luck next time!");
+                        if(!Game.CheckScore(Game.Score))
+                            MessageBox.Show("Better luck next time!");
+                        else
+                        {
+                            UserInputTextBox wizard = new UserInputTextBox("Please enter your name!", "You got a high score!");
+                            wizard.ShowDialog();
+                            Game.SaveScore(new HighScore(wizard.Value, Game.Score));
+                        }
 
                         FireworkToolkit.Gaming.MainMenu menu = new FireworkToolkit.Gaming.MainMenu(Game);
                         menu.ShowDialog();
@@ -209,8 +216,10 @@ namespace FireworksGameApp
                             Dispose();
                     }
                 }
+                /*
                 else
                     Game.DecreaseScore();
+                    */
             }
         }
 

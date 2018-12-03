@@ -88,14 +88,16 @@ namespace FireworkToolkit.Gaming
         public virtual List<HighScore> GetHighScores(int topRange = 10)
         {
             List<HighScore> results = new List<HighScore>(topRange);
-            for (int i = 0; i < topRange; i++)
+            for (int i = 0; i < ((topRange < ScoresList.Count) ? topRange : ScoresList.Count); i++)
                 results.Add(ScoresList[i]);
             return results;
         }
 
         public virtual bool CheckScore(int score, int topRange = 10)
         {
-            for (int i = 0; i < ((topRange < ScoresList.Count) ? topRange : ScoresList.Count); i++)
+            if (ScoresList.Count < topRange)
+                return true;
+            for (int i = 0; i < topRange; i++)
                 if (score > ScoresList[i].Score)
                     return true;
             return false;
