@@ -48,7 +48,7 @@ namespace FireworksGameApp
                     Console.WriteLine("Found an environment file, trying to load.");
                     XElement doc = XElement.Load(Environment.CurrentDirectory + "\\Environment.xml");
                     if (doc.HasElements)
-                        if (doc.Name == "FireworkGame" && doc.Attribute("Ver").Value == "1.0.0")
+                        if (doc.Name == "FireworkGame" && doc.Attribute("Ver").Value == "1.0.1")
                             Game.FromElement(doc.Element("FireworksSim"));
                 }
                 else

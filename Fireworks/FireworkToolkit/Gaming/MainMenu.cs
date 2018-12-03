@@ -1,5 +1,6 @@
 ﻿using FireworkToolkit.Graphics.FormsComponents;
 using FireworkToolkit.Simulation;
+using FireworkToolkit.SpriteGraphics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,9 +48,13 @@ namespace FireworkToolkit.Gaming
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            SpriteManager wizard = new SpriteManager(Game.GetSprites());
+            ICollection<Sprite> copyList = new List<Sprite>();
+            foreach (Sprite s in Game.GetSprites())
+                copyList.Add(s.Clone());
+            SpriteManager wizard = new SpriteManager(copyList);
             wizard.ShowDialog();
             Game.ClearSprites();
+            Game.AddSpriteRange(wizard.Sprites);
             wizard.Dispose();
         }
 

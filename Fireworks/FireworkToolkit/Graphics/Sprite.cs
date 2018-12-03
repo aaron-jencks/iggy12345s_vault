@@ -152,7 +152,7 @@ namespace FireworkToolkit.SpriteGraphics
 
                         for (int j = 0; j < b.Width; j++)
                         {
-                            Color c = b.GetPixel(j, (int)row);
+                            Color c = b.GetPixel(j, i);
                             if (c.R == maskColor.R && c.G == maskColor.G && c.B == maskColor.B)
                             {
                                 Tuple<int, int> tuple = new Tuple<int, int>(j - (b.Width / 2), -1 * (i - (b.Height / 2)));
@@ -244,6 +244,7 @@ namespace FireworkToolkit.SpriteGraphics
 
             Sprite result = new Sprite();
             result.Name = Name;
+            result.Zoom = Zoom;
             result.coordinates = Coordinates;
             result.isConverted = isConverted;
 

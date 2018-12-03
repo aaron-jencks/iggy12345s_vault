@@ -126,7 +126,10 @@ namespace FireworkToolkit.Graphics.FormsComponents
                     edittingBuff.Add(s.Clone());
                 }
                 if (Sprites.Count > 0)
+                {
                     listBoxSprites.SelectedIndex = 0;
+                    spriteControl1.Value = edittingBuff[0];
+                }
             }
         }
 
@@ -263,13 +266,19 @@ namespace FireworkToolkit.Graphics.FormsComponents
 
         private void spriteControl1_ValueChanged(object sender, EventArgs e)
         {
-            edittingBuff[listBoxSprites.SelectedIndex] = spriteControl1.Value;
-            OnSpriteEdited(edittingBuff[listBoxSprites.SelectedIndex]);
+            if (listBoxSprites.SelectedIndex > 0)
+            {
+                edittingBuff[listBoxSprites.SelectedIndex] = spriteControl1.Value;
+                OnSpriteEdited(edittingBuff[listBoxSprites.SelectedIndex]);
+            }
         }
 
         private void listBoxSprites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            spriteControl1.Value = edittingBuff[listBoxSprites.SelectedIndex];
+            if (listBoxSprites.SelectedIndex < 0)
+                spriteControl1.Value = null;
+            else
+                spriteControl1.Value = edittingBuff[listBoxSprites.SelectedIndex];
         }
     }
 }
