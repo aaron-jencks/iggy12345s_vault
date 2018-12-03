@@ -41,7 +41,7 @@ namespace FireworkToolkit.SpriteGraphics
         /// <summary>
         /// The list of coordinates that this sprite has generated
         /// </summary>
-        private List<Tuple<int, int>> coordinates { get; } = new List<Tuple<int, int>>();
+        private List<Tuple<int, int>> coordinates { get; set; } = new List<Tuple<int, int>>();
 
         /// <summary>
         /// The list of coordinates that this sprite has generated
@@ -155,7 +155,7 @@ namespace FireworkToolkit.SpriteGraphics
                             Color c = b.GetPixel(j, (int)row);
                             if (c.R == maskColor.R && c.G == maskColor.G && c.B == maskColor.B)
                             {
-                                Tuple<int, int> tuple = new Tuple<int, int>(j - (b.Width / 2), -1 * ((int)row - (b.Height / 2)));
+                                Tuple<int, int> tuple = new Tuple<int, int>(j - (b.Width / 2), -1 * (i - (b.Height / 2)));
                                 lock (tempQueue)
                                     tempQueue.Enqueue(tuple);
                             }
@@ -232,6 +232,22 @@ namespace FireworkToolkit.SpriteGraphics
         public override string ToString()
         {
             return Name.Split(new char[]{'/', '\\'}).Last();
+        }
+
+        /// <summary>
+        /// Clones the current sprite
+        /// </summary>
+        /// <returns>Returns a new sprite with the same attributes as this one</returns>
+        public Sprite Clone()
+        {
+            while (isConverting) ;
+
+            Sprite result = new Sprite();
+            result.Name = Name;
+            result.coordinates = Coordinates;
+            result.isConverted = isConverted;
+
+            return result;
         }
 
         #endregion
