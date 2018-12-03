@@ -12,3 +12,5 @@ G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\Fire
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Gaming.MainMenu.resources
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Gaming.UserInputTextBox.resources
 G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Gaming.HighScoreTable.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Gaming.AboutBox1.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworkToolkit\obj\Release\FireworkToolkit.Properties.Resources.resources

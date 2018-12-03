@@ -75,5 +75,12 @@ namespace FireworkToolkit.Gaming
             table.ShowDialog();
             table.Dispose();
         }
+
+        private void MainMenu_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            AboutBox1 wizard = new AboutBox1();
+            wizard.ShowDialog();
+            wizard.Dispose();
+        }
     }
 }
