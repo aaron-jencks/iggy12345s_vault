@@ -1,0 +1,13 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\bin\Release\FireworksGameApp.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\bin\Release\FireworksGameApp.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\bin\Release\FireworksGameApp.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\bin\Release\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\bin\Release\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.Form1.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.Properties.Resources.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.csproj.GenerateResource.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\obj\Release\FireworksGameApp.pdb

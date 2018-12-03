@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FireworkGame Ver="1.0.0">
+  <FireworksSim RefreshRate="50" LaunchProb="0.04" MinVel="-5" MaxVel="-20" Width="800" Height="450" />
+</FireworkGame>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FireworkGame Ver="1.0.0">
-  <FireworksSim RefreshRate="33" LaunchProb="0.05" MinVel="-5" MaxVel="-20" Width="0" Height="0">
+  <FireworksSim RefreshRate="82" LaunchProb="0.36000000000000015" MinVel="-5" MaxVel="-20" Width="1920" Height="1080">
     <Sprite Zoom="4" Name="C:\Users\Aaron\Pictures\Pachirisu Outline.bmp">
       <Data>
         <Coordinate X="23" Y="55" />
