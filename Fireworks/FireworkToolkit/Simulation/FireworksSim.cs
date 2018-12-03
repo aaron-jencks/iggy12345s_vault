@@ -125,7 +125,7 @@ namespace FireworkToolkit.Simulation
 
         #region Flow Control
 
-        public void Simulate(int numSteps = 1)
+        public virtual void Simulate(int numSteps = 1)
         {
             lock (Fireworks)
             {
@@ -168,7 +168,7 @@ namespace FireworkToolkit.Simulation
             OnUpdateEvent();
         }
 
-        public void Start()
+        public virtual void Start()
         {
             if (painter == null || !painter.IsAlive)
             {
@@ -178,7 +178,7 @@ namespace FireworkToolkit.Simulation
             }
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             if (painter != null && painter.IsAlive)
             {
@@ -187,12 +187,12 @@ namespace FireworkToolkit.Simulation
             }
         }
 
-        public void Pause()
+        public virtual void Pause()
         {
             isPaused = true;
         }
 
-        public void Resume()
+        public virtual void Resume()
         {
             isPaused = false;
         }
@@ -201,49 +201,54 @@ namespace FireworkToolkit.Simulation
 
         #region Asset Control
 
-        public ICollection<IFilable> GetAllAssets()
+        public virtual ICollection<IFilable> GetAllAssets()
         {
             return Sprites.Cast<IFilable>().ToList();
         }
 
-        public ICollection<Sprite> GetAllSprites()
+        public virtual ICollection<Sprite> GetAllSprites()
         {
             return Sprites;
         }
 
-        public ICollection<AFirework> GetAllFireworks()
+        public virtual ICollection<AFirework> GetAllFireworks()
         {
             return Fireworks;
         }
 
-        public void ClearAssets()
+        public virtual void ClearAssets()
         {
             Sprites.Clear();
         }
 
-        public void AddFirework(AFirework firework)
+        public virtual void AddFirework(AFirework firework)
         {
             Fireworks.Add(firework);
         }
 
-        public void AddFireworkRange(ICollection<AFirework> fireworks)
+        public virtual void AddFireworkRange(ICollection<AFirework> fireworks)
         {
             Fireworks.AddRange(fireworks);
         }
 
-        public void AddSprite(Sprite sprite)
+        public virtual void ClearSprites()
+        {
+            Sprites.Clear();
+        }
+
+        public virtual void AddSprite(Sprite sprite)
         {
             Sprites.Add(sprite);
         }
 
-        public void AddSpriteRange(ICollection<Sprite> sprites)
+        public virtual void AddSpriteRange(ICollection<Sprite> sprites)
         {
             Sprites.AddRange(sprites);
         }
 
         #region File IO
 
-        public void SaveAssets(string filename)
+        public virtual void SaveAssets(string filename)
         {
             XElement doc = new XElement("root");
             foreach (IFilable f in GetAllAssets())
@@ -252,7 +257,7 @@ namespace FireworkToolkit.Simulation
         }
 
         [STAThread]
-        public void SaveAssets()
+        public virtual void SaveAssets()
         {
             SaveFileDialog wizard = new SaveFileDialog();
             wizard.AddExtension = true;
@@ -267,7 +272,7 @@ namespace FireworkToolkit.Simulation
             wizard.Dispose();
         }
 
-        public void LoadAssets(string filename, bool clearOld = true)
+        public virtual void LoadAssets(string filename, bool clearOld = true)
         {
             if (clearOld)
                 ClearAssets();
@@ -285,7 +290,7 @@ namespace FireworkToolkit.Simulation
         }
 
         [STAThread]
-        public void LoadAssets(bool clearOld = true)
+        public virtual void LoadAssets(bool clearOld = true)
         {
             OpenFileDialog wizard = new OpenFileDialog();
             wizard.Filter = "Xml | *.xml";
@@ -341,7 +346,7 @@ namespace FireworkToolkit.Simulation
 
         #endregion
 
-        public void Show(System.Drawing.Graphics g)
+        public virtual void Show(System.Drawing.Graphics g)
         {
             lock (Fireworks)
             {
