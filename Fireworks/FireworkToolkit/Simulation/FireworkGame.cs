@@ -25,6 +25,11 @@ namespace FireworkToolkit.Simulation
         public FireworksSim Simulation { get; private set; } = new FireworksSim();
 
         /// <summary>
+        /// The number of highscores that there can be
+        /// </summary>
+        public int NumberOfHighScoresToKeep { get; set; } = 10;
+
+        /// <summary>
         /// Boolean indicator indicating if the game has ended.
         /// </summary>
         protected bool isOver { get; set; } = false;
@@ -112,7 +117,10 @@ namespace FireworkToolkit.Simulation
 
         public virtual ICollection<IFilable> GetAllAssets()
         {
-            return Simulation.GetAllAssets();
+            ICollection<IFilable> result = Simulation.GetAllAssets();
+            foreach (HighScore h in ScoresList)
+                result.Add(h);
+            return result;
         }
 
         public virtual ICollection<Sprite> GetSprites()
@@ -141,12 +149,37 @@ namespace FireworkToolkit.Simulation
 
         public virtual void LoadAssets(string filename, bool clearOld = true)
         {
-            Simulation.LoadAssets(filename, clearOld);
+            if (clearOld)
+                ClearAssets();
+
+            XElement doc = XElement.Load(filename);
+            foreach (XElement child in doc.Elements())
+                switch (child.Name.ToString())
+                {
+                    case "FireworksSim":
+                        Simulation.FromElement(child);
+                        break;
+                    case "Highscore":
+                        HighScore high = new HighScore();
+                        high.FromElement(child);
+                        SaveScore(high);
+                        break;
+                }
         }
 
+        [STAThread]
         public virtual void LoadAssets(bool clearOld = true)
         {
-            Simulation.LoadAssets(clearOld);
+            OpenFileDialog wizard = new OpenFileDialog();
+            wizard.Filter = "Xml | *.xml";
+            wizard.Title = "Select an attribute file to open";
+            wizard.RestoreDirectory = true;
+            wizard.ShowDialog();
+
+            if (wizard.FileName != "")
+                LoadAssets(wizard.FileName, clearOld);
+
+            wizard.Dispose();
         }
 
         public virtual void Pause()
@@ -186,9 +219,17 @@ namespace FireworkToolkit.Simulation
             Simulation.Start();
         }
 
+        /// <summary>
+        /// Stops the game and collects the high score if it qualified
+        /// </summary>
         public virtual void Stop()
         {
             isRunning = false;
+
+            // Stores the highscore if it qualifies
+            if (CheckScore(Score, NumberOfHighScoresToKeep))
+                SaveCurrentScore();
+
             Simulation.Stop();
         }
 
