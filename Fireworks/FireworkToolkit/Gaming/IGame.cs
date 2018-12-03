@@ -65,7 +65,7 @@ namespace FireworkToolkit.Gaming
         /// </summary>
         /// <param name="scores"></param>
         /// <param name="topRange"></param>
-        /// <returns></returns>
+        /// <returns>Returns a list of booleans that are true if the given score is whithin the top n high scores, and false otherwise</returns>
         List<bool> SaveScoreRange(ICollection<HighScore> scores, int topRange);
 
         /// <summary>
@@ -79,5 +79,13 @@ namespace FireworkToolkit.Gaming
         /// <param name="topRange">The number of top scores to return</param>
         /// <returns>Returns a list containing the n high scores</returns>
         List<HighScore> GetHighScores(int topRange);
+
+        /// <summary>
+        /// Checks to see if the given score is within the top range of high scores
+        /// </summary>
+        /// <param name="score">Score to check</param>
+        /// <param name="topRange">Number of high scores to check it against</param>
+        /// <returns>Returns true if the score is within the given range, returns false otherwise</returns>
+        bool CheckScore(int score, int topRange);
     }
 }

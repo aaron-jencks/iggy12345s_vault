@@ -57,20 +57,20 @@ namespace FireworkToolkit.Gaming
             Score = 0;
         }
 
-        public bool SaveCurrentScore(int topRange = 10)
+        public virtual bool SaveCurrentScore(int topRange = 10)
         {
             HighScore highscore = new HighScore(GetPlayerName(), Score);
             return SaveScore(highscore, topRange);
         }
 
-        public bool SaveScore(HighScore score, int topRange = 10)
+        public virtual bool SaveScore(HighScore score, int topRange = 10)
         {
             ScoresList.Add(score);
             ScoresList.Sort();
             return ScoresList.IndexOf(score) < topRange;
         }
 
-        public List<bool> SaveScoreRange(ICollection<HighScore> scores, int topRange = 10)
+        public virtual List<bool> SaveScoreRange(ICollection<HighScore> scores, int topRange = 10)
         {
             List<bool> results = new List<bool>(scores.Count);
             foreach (HighScore score in scores)
@@ -80,17 +80,25 @@ namespace FireworkToolkit.Gaming
             return results;
         }
 
-        public void ResetScoresList()
+        public virtual void ResetScoresList()
         {
             ScoresList.Clear();
         }
 
-        public List<HighScore> GetHighScores(int topRange = 10)
+        public virtual List<HighScore> GetHighScores(int topRange = 10)
         {
             List<HighScore> results = new List<HighScore>(topRange);
             for (int i = 0; i < topRange; i++)
                 results.Add(ScoresList[i]);
             return results;
+        }
+
+        public virtual bool CheckScore(int score, int topRange = 10)
+        {
+            for (int i = 0; i < ((topRange < ScoresList.Count) ? topRange : ScoresList.Count); i++)
+                if (score > ScoresList[i].Score)
+                    return true;
+            return false;
         }
 
         #endregion
