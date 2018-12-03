@@ -86,7 +86,7 @@ namespace FireworkToolkit._2D
                 lock(g)
                     g.FillEllipse(Brush,
                     new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
-                    4, 4));
+                    8, 8));
             else
             {
                 base.Show(g);
