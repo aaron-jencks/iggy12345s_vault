@@ -126,7 +126,7 @@ namespace FireworkToolkit.SpriteGraphics
             List<Thread> threads;
             int height;
 
-            coordinates.Clear();
+            Queue<Tuple<int, int>> tempQueue = new Queue<Tuple<int, int>>();
 
             lock (image)
             {
@@ -152,7 +152,8 @@ namespace FireworkToolkit.SpriteGraphics
                         if (c.R == maskColor.R && c.G == maskColor.G && c.B == maskColor.B)
                         {
                             Tuple<int, int> tuple = new Tuple<int, int>(j - (b.Width / 2), -1 * ((int)row - (b.Height / 2)));
-                            coordinates.Add(tuple);
+                            lock(tempQueue)
+                                tempQueue.Enqueue(tuple);
                         }
                     }
 
@@ -167,6 +168,13 @@ namespace FireworkToolkit.SpriteGraphics
             // Waits until all of the threads have finished
             foreach (Thread t in threads)
                 while (t.IsAlive) ;
+
+            // Moves the queue items into the coordinates list
+            coordinates.Clear();
+            coordinates.Capacity = tempQueue.Count; // Resizes it to the number of coordinates
+            while (tempQueue.Count > 0)
+                coordinates.Add(tempQueue.Dequeue());
+            tempQueue.Clear();
 
             List<Tuple<int, int>> nullIndices = new List<Tuple<int, int>>();
             foreach (Tuple<int, int> t in coordinates)
