@@ -31,6 +31,12 @@ namespace FireworkToolkit.Gaming
             return Lives;
         }
 
+        public int DecreaseLifeCount(int amount = 1)
+        {
+            ResetLives(Lives - amount);
+            return Lives;
+        }
+
         public void ResetLives(int newAmount = 3)
         {
             Lives = newAmount;
@@ -38,7 +44,7 @@ namespace FireworkToolkit.Gaming
 
         public override bool IsOver()
         {
-            return Lives == 0;
+            return Lives <= 0;
         }
 
         #endregion
