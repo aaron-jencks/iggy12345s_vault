@@ -15,7 +15,7 @@ using System.Xml.Linq;
 
 namespace FireworkToolkit.Simulation
 {
-    public class FireworkGame : AGame, ISimulation, IFilable
+    public class FireworkGame : AGameWLives, ISimulation, IFilable
     {
         #region Properties
 
@@ -63,7 +63,7 @@ namespace FireworkToolkit.Simulation
         /// </summary>
         /// <param name="p">The point in space that was clicked</param>
         /// <returns>Returns the number of fireworks that exploded</returns>
-        public int Click(Point p)
+        public virtual int Click(Point p)
         {
             if (isRunning)
             {
@@ -85,37 +85,37 @@ namespace FireworkToolkit.Simulation
             return 0;
         }
 
-        public void AddFirework(AFirework firework)
+        public virtual void AddFirework(AFirework firework)
         {
             Simulation.AddFirework(firework);
         }
 
-        public void AddFireworkRange(ICollection<AFirework> fireworks)
+        public virtual void AddFireworkRange(ICollection<AFirework> fireworks)
         {
             Simulation.AddFireworkRange(fireworks);
         }
 
-        public void AddSprite(Sprite sprite)
+        public virtual void AddSprite(Sprite sprite)
         {
             Simulation.AddSprite(sprite);
         }
 
-        public void AddSpriteRange(ICollection<Sprite> sprites)
+        public virtual void AddSpriteRange(ICollection<Sprite> sprites)
         {
             Simulation.AddSpriteRange(sprites);
         }
 
-        public void ClearAssets()
+        public virtual void ClearAssets()
         {
             Simulation.ClearAssets();
         }
 
-        public ICollection<IFilable> GetAllAssets()
+        public virtual ICollection<IFilable> GetAllAssets()
         {
             return Simulation.GetAllAssets();
         }
 
-        public ICollection<Sprite> GetSprites()
+        public virtual ICollection<Sprite> GetSprites()
         {
             return Simulation.GetAllSprites();
         }
@@ -139,54 +139,54 @@ namespace FireworkToolkit.Simulation
             return isRunning;
         }
 
-        public void LoadAssets(string filename, bool clearOld = true)
+        public virtual void LoadAssets(string filename, bool clearOld = true)
         {
             Simulation.LoadAssets(filename, clearOld);
         }
 
-        public void LoadAssets(bool clearOld = true)
+        public virtual void LoadAssets(bool clearOld = true)
         {
             Simulation.LoadAssets(clearOld);
         }
 
-        public void Pause()
+        public virtual void Pause()
         {
             Simulation.Pause();
         }
 
-        public void Resume()
+        public virtual void Resume()
         {
             Simulation.Resume();
         }
 
-        public void SaveAssets(string filename)
+        public virtual void SaveAssets(string filename)
         {
             Simulation.SaveAssets(filename);
         }
 
-        public void SaveAssets()
+        public virtual void SaveAssets()
         {
             Simulation.SaveAssets();
         }
 
-        public void Show(System.Drawing.Graphics g)
+        public virtual void Show(System.Drawing.Graphics g)
         {
             Simulation.Show(g);
         }
 
-        public void Simulate(int numSteps = 1)
+        public virtual void Simulate(int numSteps = 1)
         {
             Simulation.Simulate(numSteps);
         }
 
-        public void Start()
+        public virtual void Start()
         {
             isRunning = true;
             Simulation.RefreshRate = 50;
             Simulation.Start();
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             isRunning = false;
             Simulation.Stop();
@@ -243,12 +243,12 @@ namespace FireworkToolkit.Simulation
             return Score;
         }
 
-        public XElement GetElement()
+        public virtual XElement GetElement()
         {
             return Simulation.GetElement();
         }
 
-        public void FromElement(XElement e)
+        public virtual void FromElement(XElement e)
         {
             Stop();
             isOver = false;
