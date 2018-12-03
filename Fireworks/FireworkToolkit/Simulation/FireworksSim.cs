@@ -345,15 +345,30 @@ namespace FireworkToolkit.Simulation
         {
             lock (Fireworks)
             {
-                List<Task> tasks = new List<Task>(Fireworks.Count);
-                foreach (AFirework f in Fireworks)
+                int fCount = Fireworks.Count, pCount = Environment.ProcessorCount;
+
+                List<Thread> tasks = new List<Thread>((fCount < pCount) ? fCount : pCount);
+
+                int adjustedIncrement = (fCount < pCount) ? 1 : fCount / pCount;
+
+                for (int i = 0; i < ((fCount < pCount) ? fCount : pCount); i++)
                 {
-                    //f.Show(g);
-                    tasks.Add(Task.Factory.StartNew(() => { f.Show(g); }));
+                    Thread t = new Thread((object p) =>
+                    {
+                        int f = (int)p;
+                        for (int j = f * adjustedIncrement; j < (f + 1) * adjustedIncrement; j++)
+                        {
+                            Fireworks[j].Show(g);
+                        }
+                    });
+
+                    t.Start(i);
+
+                    tasks.Add(t);
                 }
 
-                foreach (Task t in tasks)
-                    while (!t.IsCompleted) ;
+                foreach (Thread t in tasks)
+                    while (t.IsAlive) ;
             }
         }
 
