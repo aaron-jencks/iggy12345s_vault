@@ -201,7 +201,12 @@ namespace FireworksGameApp
                     if(Game.IsOver())
                     {
                         Game.Stop();
+                        MessageBox.Show("Better luck next time!");
 
+                        FireworkToolkit.Gaming.MainMenu menu = new FireworkToolkit.Gaming.MainMenu(Game);
+                        menu.ShowDialog();
+                        if (!Game.IsRunning())
+                            Dispose();
                     }
                 }
                 else
