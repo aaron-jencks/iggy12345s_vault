@@ -103,7 +103,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GameMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameMenu";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameMenu_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

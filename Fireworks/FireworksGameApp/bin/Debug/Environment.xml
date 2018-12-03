@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FireworkGame Ver="1.0.1">
-  <FireworksSim RefreshRate="55" LaunchProb="0.03" MinVel="-5" MaxVel="-20" Width="800" Height="450">
+  <FireworksSim RefreshRate="50" LaunchProb="0.03" MinVel="-5" MaxVel="-20" Width="1920" Height="1080">
     <Sprite Zoom="2" Name="G:\Github Repository\iggy12345s_vault\Fireworks\FireworksGameApp\Assets\BongoCat.bmp">
       <Data>
         <Coordinate X="-13" Y="46" />

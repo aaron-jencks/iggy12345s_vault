@@ -90,7 +90,9 @@
             this.MinimizeBox = false;
             this.Name = "MainMenu";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainMenu";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
