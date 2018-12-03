@@ -122,7 +122,8 @@ namespace FireworksGameApp
                     //Image i = (Image)canvasBox.Image.Clone();
                     using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(canvasBox.Image))
                     {
-                        g.Clear(Color.Black);
+                        //g.Clear(Color.Black);
+                        g.FillRectangle(new SolidBrush(Color.Black), g.ClipBounds);
 
                         if (DrawFade)
                         {
@@ -148,7 +149,7 @@ namespace FireworksGameApp
                             g.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
                         }
 
-                        g.DrawString("Score: " + Game.Score, SystemFonts.DefaultFont, new SolidBrush(Color.White), new Point(0, 0));
+                        g.DrawString("Score: " + Game.Score + " Lives: " + Game.Lives, SystemFonts.DefaultFont, new SolidBrush(Color.White), new Point(0, 0));
 
 
                         Game.Simulation.Show(g);
@@ -194,6 +195,8 @@ namespace FireworksGameApp
                 int count = Game.Click(PointToClient(Cursor.Position));
                 if (count > 0)
                     Game.IncreaseScore(count);
+                else if (Game.Score == 0)
+                    Game.DecreaseLifeCount();
                 else
                     Game.DecreaseScore();
             }
