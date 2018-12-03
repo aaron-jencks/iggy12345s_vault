@@ -76,14 +76,17 @@ namespace FireworkToolkit.Simulation
 
                 AFirework[] list = (AFirework[])Simulation.GetAllFireworks().ToArray().Clone();
 
-                Vector2D v = (Vector2D)list[0].Position;
+                if (list.Length > 0)
+                {
+                    Vector2D v = (Vector2D)list[0].Position;
 
-                foreach (AFirework f in list)
-                    if (!f.Exploded && Math.Abs((int)f.Position.AllComponents()['X'] - p.X) < 10 && Math.Abs((int)f.Position.AllComponents()['Y'] - p.Y) < 10)
-                    {
-                        f.Explode();
-                        sum++;
-                    }
+                    foreach (AFirework f in list)
+                        if (!f.Exploded && Math.Abs((int)f.Position.AllComponents()['X'] - p.X) < 10 && Math.Abs((int)f.Position.AllComponents()['Y'] - p.Y) < 10)
+                        {
+                            f.Explode();
+                            sum++;
+                        }
+                }
 
                 return sum;
             }
@@ -135,6 +138,7 @@ namespace FireworkToolkit.Simulation
             return Simulation.GetAllSprites();
         }
 
+        [STAThread]
         public override string GetPlayerName()
         {
             UserInputTextBox wizard = new UserInputTextBox("Please enter your name!");
@@ -146,7 +150,7 @@ namespace FireworkToolkit.Simulation
 
         public override bool IsOver()
         {
-            return isOver;
+            return Lives <= 0;
         }
 
         public override bool IsRunning()
@@ -261,19 +265,22 @@ namespace FireworkToolkit.Simulation
         /// <returns>Returns the new score</returns>
         public override int IncreaseScore(int amt = 1)
         {
-            int prev = Score;
-            Score += amt;
-
-            if (!prevIncreasedSpeed && Score % 10 == 0 || prev + 10 - (prev % 10) <= Score)
+            if (amt > 0)
             {
-                Simulation.RefreshRate = (int)(Simulation.RefreshRate * 0.9);
-                prevIncreasedSpeed = true;
-            }
+                int prev = Score;
+                Score += amt;
 
-            if (!prevIncreasedProb && Score % 5 == 0 || prev + 5 - (prev % 5) <= Score)
-            {
-                Simulation.LaunchProb += (Simulation.LaunchProb + 0.01 > 1) ? 1 : 0.01;
-                prevIncreasedProb = true;
+                if (!prevIncreasedSpeed && Score % 10 == 0 || prev + 10 - (prev % 10) <= Score)
+                {
+                    Simulation.RefreshRate = (int)(Simulation.RefreshRate * 0.9);
+                    prevIncreasedSpeed = true;
+                }
+
+                if (!prevIncreasedProb && Score % 5 == 0 || prev + 5 - (prev % 5) <= Score)
+                {
+                    Simulation.LaunchProb += (Simulation.LaunchProb + 0.01 > 1) ? 1 : 0.01;
+                    prevIncreasedProb = true;
+                }
             }
             return Score;
         }
@@ -286,19 +293,22 @@ namespace FireworkToolkit.Simulation
         /// <returns>Returns the new score</returns>
         public override int DecreaseScore(int amt = 1)
         {
-            int prev = Score;
-            Score -= amt;
-
-            if (prevIncreasedSpeed && Score % 10 == 0 || prev - (prev % 10) >= Score)
+            if (amt > 0)
             {
-                Simulation.RefreshRate = (int)(Simulation.RefreshRate / 0.9);
-                prevIncreasedSpeed = false;
-            }
+                int prev = Score;
+                Score -= amt;
 
-            if (prevIncreasedProb && Score % 5 == 0 || prev + 5 - (prev % 5) <= Score)
-            {
-                Simulation.LaunchProb -= (Simulation.LaunchProb - 0.01 < 0) ? 0 : 0.01;
-                prevIncreasedProb = false;
+                if (prevIncreasedSpeed && Score % 10 == 0 || prev - (prev % 10) >= Score)
+                {
+                    Simulation.RefreshRate = (int)(Simulation.RefreshRate / 0.9);
+                    prevIncreasedSpeed = false;
+                }
+
+                if (prevIncreasedProb && Score % 5 == 0 || prev + 5 - (prev % 5) <= Score)
+                {
+                    Simulation.LaunchProb -= (Simulation.LaunchProb - 0.01 < 0) ? 0 : 0.01;
+                    prevIncreasedProb = false;
+                }
             }
 
             return Score;
