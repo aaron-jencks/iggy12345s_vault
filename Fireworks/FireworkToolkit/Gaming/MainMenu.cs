@@ -37,6 +37,7 @@ namespace FireworkToolkit.Gaming
         private void button1_Click(object sender, EventArgs e)
         {
             Game.ResetScore();
+            Game.ResetLives();
             Game.Start();
             Dispose();
         }
