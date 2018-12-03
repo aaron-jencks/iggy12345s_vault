@@ -49,6 +49,7 @@ namespace FireworkToolkit.Gaming
         {
             SpriteManager wizard = new SpriteManager(Game.GetSprites());
             wizard.ShowDialog();
+            Game.ClearSprites();
             wizard.Dispose();
         }
 

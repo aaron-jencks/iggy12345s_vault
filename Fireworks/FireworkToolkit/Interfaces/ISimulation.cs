@@ -72,6 +72,11 @@ namespace FireworkToolkit.Interfaces
         // There is no control for removing fireworks, they disappear after they explode
 
         /// <summary>
+        /// Removes all sprites from the simulation
+        /// </summary>
+        void ClearSprites();
+
+        /// <summary>
         /// Adds a sprite to the list of sprites in the simulation
         /// </summary>
         /// <param name="sprite">Sprite to add</param>

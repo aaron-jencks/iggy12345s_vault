@@ -100,6 +100,11 @@ namespace FireworkToolkit.Simulation
             Simulation.AddFireworkRange(fireworks);
         }
 
+        public virtual void ClearSprites()
+        {
+            Simulation.ClearSprites();
+        }
+
         public virtual void AddSprite(Sprite sprite)
         {
             Simulation.AddSprite(sprite);
