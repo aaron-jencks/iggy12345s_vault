@@ -42,7 +42,7 @@ namespace FireworkToolkit.Graphics.FormsComponents
         public event ValueChangedEventHandler ValueChanged;
         protected virtual void OnValueChanged()
         {
-            numericUpDown1.Value = (decimal)sprite.Zoom;
+            numericUpDown1.Value = Convert.ToDecimal(sprite.Zoom);
             textBox1.Text = sprite.Name;
             ValueChanged?.Invoke(this, new EventArgs());
         }
@@ -74,7 +74,8 @@ namespace FireworkToolkit.Graphics.FormsComponents
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            Value.Zoom = (double)numericUpDown1.Value;
+            sprite.Zoom = Convert.ToDouble(numericUpDown1.Value);
+            OnValueChanged();
         }
 
         private void button1_Click(object sender, EventArgs e)

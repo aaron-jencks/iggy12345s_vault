@@ -145,7 +145,6 @@
             this.listBoxSprites.FormattingEnabled = true;
             this.listBoxSprites.Location = new System.Drawing.Point(0, 24);
             this.listBoxSprites.Name = "listBoxSprites";
-            this.listBoxSprites.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxSprites.Size = new System.Drawing.Size(281, 139);
             this.listBoxSprites.TabIndex = 3;
             this.listBoxSprites.SelectedIndexChanged += new System.EventHandler(this.listBoxSprites_SelectedIndexChanged);

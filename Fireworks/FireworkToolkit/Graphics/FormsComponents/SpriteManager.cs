@@ -21,6 +21,7 @@ namespace FireworkToolkit.Graphics.FormsComponents
         /// The list of sprites currently in use by the manager
         /// </summary>
         public ICollection<Sprite> Sprites { get; private set; } = new List<Sprite>();
+        public List<Sprite> edittingBuff { get; private set; } = new List<Sprite>();
 
         #endregion
 
@@ -59,12 +60,12 @@ namespace FireworkToolkit.Graphics.FormsComponents
         }
 
         /// <summary>
-        /// Triggered every time that a sprite is edited, the sender is the original sprite, and target is the new sprite
+        /// Triggered every time that a sprite is edited, the target is the new sprite
         /// </summary>
         public event SpriteEventHandler SpriteEdited;
-        protected virtual void OnSpriteEdited(Sprite original, Sprite s)
+        protected virtual void OnSpriteEdited(Sprite s)
         {
-            SpriteEdited?.Invoke(original, s);
+            SpriteEdited?.Invoke(this, s);
         }
 
         #endregion
@@ -96,7 +97,7 @@ namespace FireworkToolkit.Graphics.FormsComponents
         public SpriteManager(ICollection<Sprite> sprites)
         {
             InitializeComponent();
-            Sprites = sprites;
+            Sprites = sprites ?? new List<Sprite>();
             TransferSprites(false);
         }
 
@@ -113,14 +114,17 @@ namespace FireworkToolkit.Graphics.FormsComponents
             if(fromListBox)
             {
                 Sprites.Clear();
-                foreach (object o in listBoxSprites.Items)
+                foreach (Sprite o in edittingBuff)
                     Sprites.Add((Sprite)o);
             }
             else
             {
                 listBoxSprites.Items.Clear();
                 foreach (Sprite s in Sprites)
-                    listBoxSprites.Items.Add(s);
+                {
+                    listBoxSprites.Items.Add(s.ToString());
+                    edittingBuff.Add(s.Clone());
+                }
                 if (Sprites.Count > 0)
                     listBoxSprites.SelectedIndex = 0;
             }
@@ -154,8 +158,9 @@ namespace FireworkToolkit.Graphics.FormsComponents
                     if (s != "")
                     {
                         Sprite temp = new Sprite(s);
-                        listBoxSprites.Items.Add(temp);
-                        listBoxSprites.SelectedIndex = listBoxSprites.Items.IndexOf(temp);
+                        listBoxSprites.Items.Add(temp.ToString());
+                        edittingBuff.Add(temp);
+                        listBoxSprites.SelectedIndex = edittingBuff.IndexOf(temp);
                         OnSpriteAdded(temp);
                     }
         }
@@ -164,14 +169,8 @@ namespace FireworkToolkit.Graphics.FormsComponents
         {
             List<object> temp = new List<object>(listBoxSprites.SelectedItems.Count);
 
-            foreach (object o in listBoxSprites.SelectedItems)
-                temp.Add(o);
-
-            foreach(object o in temp)
-            { 
-                listBoxSprites.Items.Remove(o);
-                OnSpriteRemoved((Sprite)o);
-            }
+            edittingBuff.RemoveAt(listBoxSprites.SelectedIndex);
+            listBoxSprites.Items.RemoveAt(listBoxSprites.SelectedIndex);
 
             if (listBoxSprites.Items.Count > 0)
                 listBoxSprites.SelectedIndex = 0;
@@ -179,18 +178,18 @@ namespace FireworkToolkit.Graphics.FormsComponents
 
         private void selectedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (object o in listBoxSprites.SelectedItems)
-            {
-                listBoxSprites.Items.Remove(o);
-                OnSpriteRemoved((Sprite)o);
-            }
+            Sprite o = edittingBuff[listBoxSprites.SelectedIndex];
+            edittingBuff.RemoveAt(listBoxSprites.SelectedIndex);
+            listBoxSprites.Items.RemoveAt(listBoxSprites.SelectedIndex);
+            OnSpriteRemoved(o);
         }
 
         private void allToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (object o in listBoxSprites.Items)
+            foreach (Sprite o in edittingBuff)
                 OnSpriteRemoved((Sprite)o);
             listBoxSprites.Items.Clear();
+            edittingBuff.Clear();
         }
 
         private void fromBitmapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,8 +206,9 @@ namespace FireworkToolkit.Graphics.FormsComponents
                     if(s != "")
                     {
                         Sprite temp = new Sprite(s);
-                        listBoxSprites.Items.Add(temp);
-                        listBoxSprites.SelectedIndex = listBoxSprites.Items.IndexOf(temp);
+                        listBoxSprites.Items.Add(temp.ToString());
+                        edittingBuff.Add(temp);
+                        listBoxSprites.SelectedIndex = edittingBuff.IndexOf(temp);
                         OnSpriteAdded(temp);
                     }
         }
@@ -231,7 +231,8 @@ namespace FireworkToolkit.Graphics.FormsComponents
                             Sprite s = new Sprite();
                             s.FromElement(child);
                             OnSpriteAdded(s);
-                            listBoxSprites.Items.Add(s);
+                            listBoxSprites.Items.Add(s.ToString());
+                            edittingBuff.Add(s);
                             break;
                     }
             }
@@ -262,14 +263,13 @@ namespace FireworkToolkit.Graphics.FormsComponents
 
         private void spriteControl1_ValueChanged(object sender, EventArgs e)
         {
-            Sprite original = (Sprite)listBoxSprites.SelectedItem;
-            listBoxSprites.SelectedItem = spriteControl1.Value;
-            OnSpriteEdited(original, spriteControl1.Value);
+            edittingBuff[listBoxSprites.SelectedIndex] = spriteControl1.Value;
+            OnSpriteEdited(edittingBuff[listBoxSprites.SelectedIndex]);
         }
 
         private void listBoxSprites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            spriteControl1.Value = (Sprite)listBoxSprites.SelectedItem;
+            spriteControl1.Value = edittingBuff[listBoxSprites.SelectedIndex];
         }
     }
 }
