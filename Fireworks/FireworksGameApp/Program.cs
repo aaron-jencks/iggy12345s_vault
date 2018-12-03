@@ -18,7 +18,7 @@ namespace FireworksGameApp
             Application.SetCompatibleTextRenderingDefault(false);
             Form form = new Form1();
             if(!form.IsDisposed)
-                Application.Run(new Form1());
+                Application.Run(form);
         }
     }
 }
