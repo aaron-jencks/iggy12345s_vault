@@ -112,14 +112,16 @@ namespace FireworkToolkit.Simulation
 
         public virtual void ClearAssets()
         {
+            ResetScoresList();
             Simulation.ClearAssets();
         }
 
         public virtual ICollection<IFilable> GetAllAssets()
         {
-            ICollection<IFilable> result = Simulation.GetAllAssets();
+            List<IFilable> result = new List<IFilable>();
             foreach (HighScore h in ScoresList)
                 result.Add(h);
+            result.Add(Simulation);
             return result;
         }
 
@@ -194,12 +196,25 @@ namespace FireworkToolkit.Simulation
 
         public virtual void SaveAssets(string filename)
         {
-            Simulation.SaveAssets(filename);
+            XElement doc = new XElement("root");
+            foreach (IFilable f in GetAllAssets())
+                doc.Add(f.GetElement());
+            doc.Save(filename);
         }
 
         public virtual void SaveAssets()
         {
-            Simulation.SaveAssets();
+            SaveFileDialog wizard = new SaveFileDialog();
+            wizard.AddExtension = true;
+            wizard.Filter = "Xml | *.xml";
+            wizard.DefaultExt = "xml";
+            wizard.Title = "Select a file to save to";
+            wizard.ShowDialog();
+
+            if (wizard.FileName != "")
+                SaveAssets(wizard.FileName);
+
+            wizard.Dispose();
         }
 
         public virtual void Show(System.Drawing.Graphics g)

@@ -386,6 +386,14 @@ namespace FireworkToolkit.Simulation
             }
         }
 
+        public override string ToString()
+        {
+            string result = base.ToString() + "\nAssets:\n";
+            foreach (IFilable f in GetAllAssets())
+                result += f.ToString() + "\n";
+            return result;
+        }
+
         #endregion
     }
 }

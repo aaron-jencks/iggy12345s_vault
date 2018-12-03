@@ -55,6 +55,7 @@
     <Compile Include="Gaming\GameMenu.Designer.cs">
       <DependentUpon>GameMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gaming\HighScore.cs" />
     <Compile Include="Gaming\IGameWLives.cs" />
     <Compile Include="Gaming\MainMenu.cs">
       <SubType>Form</SubType>

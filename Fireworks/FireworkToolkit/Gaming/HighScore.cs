@@ -42,5 +42,10 @@ namespace FireworkToolkit.Gaming
                 Score = (int)e.Attribute("Score");
             }
         }
+
+        public override string ToString()
+        {
+            return "Highscore: " + Name + " -- " + Score;
+        }
     }
 }
