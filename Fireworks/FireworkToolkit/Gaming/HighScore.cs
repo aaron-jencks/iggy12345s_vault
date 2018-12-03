@@ -1,12 +1,14 @@
-﻿using System;
+﻿using FireworkToolkit.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FireworkToolkit.Gaming
 {
-    public class HighScore : IComparable<HighScore>
+    public class HighScore : IComparable<HighScore>, IFilable
     {
         #region Properties
 
@@ -25,6 +27,20 @@ namespace FireworkToolkit.Gaming
         public int CompareTo(HighScore other)
         {
             return Score.CompareTo(other.Score);
+        }
+
+        public XElement GetElement()
+        {
+            return new XElement("Highscore", new XAttribute("Name", Name), new XAttribute("Score", Score));
+        }
+
+        public void FromElement(XElement e)
+        {
+            if (e.Name == "Highscore")
+            {
+                Name = (string)e.Attribute("Name");
+                Score = (int)e.Attribute("Score");
+            }
         }
     }
 }
