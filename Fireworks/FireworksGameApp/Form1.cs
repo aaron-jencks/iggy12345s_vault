@@ -178,7 +178,7 @@ namespace FireworksGameApp
             Console.WriteLine("Writing environment to the file");
             FileStream fs = new FileStream(Environment.CurrentDirectory + "\\Environment.xml", FileMode.Create);
             fs.Dispose();
-            XElement doc = new XElement("FireworkGame", new XAttribute("Ver", "1.0.0"));
+            XElement doc = new XElement("FireworkGame", new XAttribute("Ver", "1.0.1"));
             doc.Add(Game.GetElement());
             doc.Save(Environment.CurrentDirectory + "\\Environment.xml");
         }
@@ -196,7 +196,14 @@ namespace FireworksGameApp
                 if (count > 0)
                     Game.IncreaseScore(count);
                 else if (Game.Score == 0)
+                {
                     Game.DecreaseLifeCount();
+                    if(Game.IsOver())
+                    {
+                        Game.Stop();
+
+                    }
+                }
                 else
                     Game.DecreaseScore();
             }
