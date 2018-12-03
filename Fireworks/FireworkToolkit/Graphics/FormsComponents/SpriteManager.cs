@@ -121,6 +121,8 @@ namespace FireworkToolkit.Graphics.FormsComponents
                 listBoxSprites.Items.Clear();
                 foreach (Sprite s in Sprites)
                     listBoxSprites.Items.Add(s);
+                if (Sprites.Count > 0)
+                    listBoxSprites.SelectedIndex = 0;
             }
         }
 
@@ -153,6 +155,7 @@ namespace FireworkToolkit.Graphics.FormsComponents
                     {
                         Sprite temp = new Sprite(s);
                         listBoxSprites.Items.Add(temp);
+                        listBoxSprites.SelectedIndex = listBoxSprites.Items.IndexOf(temp);
                         OnSpriteAdded(temp);
                     }
         }
@@ -169,6 +172,9 @@ namespace FireworkToolkit.Graphics.FormsComponents
                 listBoxSprites.Items.Remove(o);
                 OnSpriteRemoved((Sprite)o);
             }
+
+            if (listBoxSprites.Items.Count > 0)
+                listBoxSprites.SelectedIndex = 0;
         }
 
         private void selectedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -202,6 +208,7 @@ namespace FireworkToolkit.Graphics.FormsComponents
                     {
                         Sprite temp = new Sprite(s);
                         listBoxSprites.Items.Add(temp);
+                        listBoxSprites.SelectedIndex = listBoxSprites.Items.IndexOf(temp);
                         OnSpriteAdded(temp);
                     }
         }

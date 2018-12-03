@@ -25,17 +25,26 @@ namespace FireworkToolkit.Gaming
 
         #region Methods
 
-        public int IncreaseScore(int amount = 1)
+        public virtual int IncreaseScore(int amount = 1)
         {
             Score += amount;
             return Score;
         }
 
+        public virtual int DecreaseScore(int amount = 1)
+        {
+            Score -= amount;
+            return Score;
+        }
+
+
         public abstract bool IsOver();
+
+        public abstract bool IsRunning();
 
         public abstract string GetPlayerName();
 
-        public void ResetScore()
+        public virtual void ResetScore()
         {
             Score = 0;
         }

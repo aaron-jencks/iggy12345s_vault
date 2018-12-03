@@ -14,7 +14,11 @@ namespace FireworkToolkit._2D
     {
         #region Properties
 
+        //public new Vector2D Position { get; set; } = new Vector2D();
 
+        //public new Vector2D Velocity { get; set; } = new Vector2D();
+
+        //public new Vector2D Acceleration { get; set; } = new Vector2D();
 
         #endregion
 
@@ -22,12 +26,22 @@ namespace FireworkToolkit._2D
 
         public Firework2D(Vector2D pos, Vector2D vel) : base(pos, vel)
         {
+            Position = pos;
+            Velocity = vel;
             Acceleration = new Vector2D();
         }
 
         #endregion
 
         #region Methods
+
+        /*
+        public virtual void ApplyForce(Vector2D force)
+        {
+            Vector2D temp = force; /// Mass;
+            Acceleration += temp;
+        }
+        */
 
         /// <summary>
         /// Updates the firework by applying the gravity, and then determining if it needs to explode.
@@ -69,9 +83,10 @@ namespace FireworkToolkit._2D
         public override void Show(System.Drawing.Graphics g)
         {
             if (!Exploded)
-                g.FillEllipse(Brush,
-                new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
-                4, 4));
+                lock(g)
+                    g.FillEllipse(Brush,
+                    new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
+                    4, 4));
             else
             {
                 base.Show(g);

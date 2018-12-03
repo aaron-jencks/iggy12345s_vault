@@ -21,7 +21,7 @@ namespace FireworkToolkit.Templates
         /// <summary>
         /// A flag specifying if the firework has exploded yet, or not
         /// </summary>
-        protected bool Exploded { get; set; } = false;
+        public bool Exploded { get; protected set; } = false;
 
         /// <summary>
         /// The current alpha of the particles
@@ -79,7 +79,7 @@ namespace FireworkToolkit.Templates
         /// </summary>
         /// <param name="g">The graphics object to use to draw</param>
         public override void Show(System.Drawing.Graphics g)
-        {
+        { 
             while (Busy) ;
             Busy = true;
             lock (Particles)
@@ -88,7 +88,7 @@ namespace FireworkToolkit.Templates
                 {
                     if (ExplosionAlpha >= 0)
                         p.Color = Color.FromArgb(ExplosionAlpha, p.Color.R, p.Color.G, p.Color.B);
-
+                    
                     p.Show(g);
                 }
             }

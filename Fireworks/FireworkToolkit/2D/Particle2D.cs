@@ -49,9 +49,10 @@ namespace FireworkToolkit._2D
 
         public override void Show(System.Drawing.Graphics g)
         {
-            g.FillEllipse(Brush,
-                new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
-                4, 4));
+            lock(g)
+                g.FillEllipse(Brush,
+                    new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
+                    4, 4));
         }
     }
 }

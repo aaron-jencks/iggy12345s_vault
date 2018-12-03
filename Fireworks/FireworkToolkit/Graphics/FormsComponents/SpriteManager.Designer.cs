@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FireworkToolkit.SpriteGraphics.Sprite sprite3 = new FireworkToolkit.SpriteGraphics.Sprite();
+            FireworkToolkit.SpriteGraphics.Sprite sprite1 = new FireworkToolkit.SpriteGraphics.Sprite();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -210,9 +210,9 @@
             this.spriteControl1.Name = "spriteControl1";
             this.spriteControl1.Size = new System.Drawing.Size(159, 83);
             this.spriteControl1.TabIndex = 8;
-            sprite3.maskColor = System.Drawing.Color.Black;
-            sprite3.Zoom = 1D;
-            this.spriteControl1.Value = sprite3;
+            sprite1.maskColor = System.Drawing.Color.Black;
+            sprite1.Zoom = 1D;
+            this.spriteControl1.Value = sprite1;
             this.spriteControl1.ValueChanged += new FireworkToolkit.Graphics.FormsComponents.SpriteControl.ValueChangedEventHandler(this.spriteControl1_ValueChanged);
             // 
             // SpriteManager
@@ -233,6 +233,8 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(553, 202);
             this.Name = "SpriteManager";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "SpriteManager";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

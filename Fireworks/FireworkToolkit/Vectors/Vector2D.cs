@@ -123,8 +123,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] += b;
             }
 
@@ -135,8 +136,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] -= b;
             }
 
@@ -147,8 +149,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)b.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] = a - v.AllComponents()[c];
             }
 
@@ -159,8 +162,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] *= b;
             }
 
@@ -171,8 +175,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] *= b;
             }
 
@@ -183,8 +188,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)a.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] /= b;
             }
 
@@ -195,8 +201,9 @@ namespace FireworkToolkit.Vectors
         {
             Vector2D v = (Vector2D)b.Clone();
 
-            foreach (char c in v.AllComponents().Keys)
+            for (int i = 0; i < v.AllComponents().Count; i++)
             {
+                char c = v.AllComponents().ElementAt(i).Key;
                 v.AllComponents()[c] = a / v.AllComponents()[c];
             }
 

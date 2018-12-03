@@ -1,0 +1,12 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\bin\Debug\DialogBoxTestbench.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\bin\Debug\DialogBoxTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\bin\Debug\DialogBoxTestbench.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\bin\Debug\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\bin\Debug\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.Form1.resources
+G:\Github Repository\iggy12345s_vault\Fireworks\DialogBoxTestbench\obj\Debug\DialogBoxTestbench.csproj.GenerateResource.cache

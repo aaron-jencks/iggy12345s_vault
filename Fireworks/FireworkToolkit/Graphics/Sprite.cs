@@ -126,6 +126,8 @@ namespace FireworkToolkit.SpriteGraphics
             List<Thread> threads;
             int height;
 
+            coordinates.Clear();
+
             lock (image)
             {
                 threads = new List<Thread>(image.Height);
@@ -153,6 +155,8 @@ namespace FireworkToolkit.SpriteGraphics
                             coordinates.Add(tuple);
                         }
                     }
+
+                    b.Dispose();
                 });
 
                 t.Start(i);

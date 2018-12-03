@@ -19,7 +19,7 @@ namespace FireworkToolkit.Simulation
     /// <summary>
     /// A class used to embody a fireworks simulation
     /// </summary>
-    public class FireworksSim : ISimulation
+    public class FireworksSim : ISimulation, IFilable
     {
         #region Events
 
@@ -56,26 +56,26 @@ namespace FireworkToolkit.Simulation
         /// <summary>
         /// How often the updating thread will update all of the fireworks in ms
         /// </summary>
-        public static int RefreshRate { get; set; } = 33;   // refresh delay in ms
+        public int RefreshRate { get; set; } = 33;   // refresh delay in ms
 
         /// <summary>
         /// The probability in % (0-1) of how likely that a firework will be generated is.
         /// </summary>
-        public static double LaunchProb { get; set; } = 0.05;
+        public double LaunchProb { get; set; } = 0.05;
 
         /// <summary>
         /// The minimum velocity that a firework can have initially
         /// This is set automatically
         /// In units of pixels per update
         /// </summary>
-        public static int MinVel { get; protected set; } = -5;
+        public int MinVel { get; protected set; } = -5;
 
         /// <summary>
         /// The maximum velocity that a firework can have initially
         /// This is set automatically
         /// In units of pixels per update
         /// </summary>
-        public static int MaxVel { get; protected set; } = -20;
+        public int MaxVel { get; protected set; } = -20;
 
         /// <summary>
         /// Pauses the simulation
@@ -140,11 +140,18 @@ namespace FireworkToolkit.Simulation
                                 Fireworks.Add(new Firework2D(
                                     new Vector2D(rng.Next(Width), Height),
                                     new Vector2D(0, rng.Next(MaxVel, MinVel))));
-                            else if (r > 0.1 && Sprites.Count > 0)
-                                Fireworks.Add(new SpriteFirework2D(
-                                    new Vector2D(rng.Next(Width), Height),
-                                    new Vector2D(0, rng.Next(MaxVel, MinVel)),
-                                    Sprites[rng.Next(0, Sprites.Count)]));
+                            else if (r > 0.1)
+                            {
+                                if (Sprites.Count > 0)
+                                    Fireworks.Add(new SpriteFirework2D(
+                                        new Vector2D(rng.Next(Width), Height),
+                                        new Vector2D(0, rng.Next(MaxVel, MinVel)),
+                                        Sprites[rng.Next(0, Sprites.Count)]));
+                                else
+                                    Fireworks.Add(new Firework2D(
+                                        new Vector2D(rng.Next(Width), Height),
+                                        new Vector2D(0, rng.Next(MaxVel, MinVel))));
+                            }
 
                         }
 
@@ -173,7 +180,7 @@ namespace FireworkToolkit.Simulation
 
         public void Stop()
         {
-            if (painter.IsAlive)
+            if (painter != null && painter.IsAlive)
             {
                 isExitting = true;
                 while (painter.IsAlive) ;
@@ -202,6 +209,11 @@ namespace FireworkToolkit.Simulation
         public ICollection<Sprite> GetAllSprites()
         {
             return Sprites;
+        }
+
+        public ICollection<AFirework> GetAllFireworks()
+        {
+            return Fireworks;
         }
 
         public void ClearAssets()
@@ -287,6 +299,44 @@ namespace FireworkToolkit.Simulation
             wizard.Dispose();
         }
 
+        public virtual XElement GetElement()
+        {
+            XElement result = new XElement("FireworksSim",
+                new XAttribute("RefreshRate", RefreshRate),
+                new XAttribute("LaunchProb", LaunchProb),
+                new XAttribute("MinVel", MinVel),
+                new XAttribute("MaxVel", MaxVel),
+                new XAttribute("Width", Width),
+                new XAttribute("Height", Height));
+
+            foreach (IFilable f in GetAllAssets())
+                result.Add(f.GetElement());
+
+            return result;
+        }
+
+        public virtual void FromElement(XElement e)
+        {
+            // Wipes this object if it has already begun being used.
+            Stop();
+            ClearAssets();
+
+            RefreshRate = (int)e.Attribute("RefreshRate");
+            LaunchProb = (double)e.Attribute("LaunchProb");
+            MinVel = (int)e.Attribute("MinVel");
+            MaxVel = (int)e.Attribute("MaxVel");
+            Width = (int)e.Attribute("Width");
+            Height = (int)e.Attribute("Height");
+            foreach (XElement c in e.Elements())
+                if (c.Name == "Sprite")
+                {
+                    Sprite s = new Sprite();
+                    s.FromElement(c);
+                    AddSprite(s);
+                }
+            
+        }
+
         #endregion
 
         #endregion
@@ -294,8 +344,17 @@ namespace FireworkToolkit.Simulation
         public void Show(System.Drawing.Graphics g)
         {
             lock (Fireworks)
+            {
+                List<Task> tasks = new List<Task>(Fireworks.Count);
                 foreach (AFirework f in Fireworks)
-                    f.Show(g);
+                {
+                    //f.Show(g);
+                    tasks.Add(Task.Factory.StartNew(() => { f.Show(g); }));
+                }
+
+                foreach (Task t in tasks)
+                    while (!t.IsCompleted) ;
+            }
         }
 
         /// <summary>

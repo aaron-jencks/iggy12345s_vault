@@ -90,9 +90,12 @@ namespace FireworkToolkit._2D
                             coord.Item2 * sprite.Zoom;
 
 
-                        double angle = rng.NextDouble() * 2 * Math.PI;
+                        double angle = (targetX == 0) ? (targetY > 0) ? Math.PI / 2 : (targetY == 0) ? 0 : -1 * Math.PI / 2 : // Coordinate is on the Y-Axis
+                            (targetY == 0) ? (targetX < 0) ? Math.PI : 0 : // coordinate is on the X-axis
+                            (targetY > 0) ? (targetX > 0) ? Math.Atan(targetY / targetX) : -1 * (Math.PI - Math.Atan(targetY / targetX)) : // Coordinate is above the X-axis
+                            (targetX > 0) ? Math.Atan(targetY / targetX) : -1 * (Math.PI - Math.Atan(targetY / targetX));  // Coordinate is below the X-axis
                         double xVel = (rng.NextDouble() * ExplosionMag) * Math.Cos(angle);
-                        double yVel = (rng.NextDouble() * ExplosionMag) * Math.Sin(angle);
+                        double yVel = -1 * (rng.NextDouble() * ExplosionMag) * Math.Sin(angle);
 
                         Particles.Add(new Particle2D(Color,
                         new Vector2D(((Vector2D)Position).X + targetX, ((Vector2D)Position).Y - targetY),
@@ -106,9 +109,10 @@ namespace FireworkToolkit._2D
         public override void Show(System.Drawing.Graphics g)
         {
             if (!Exploded)
-                g.FillEllipse(Brush,
-                new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
-                4, 4));
+                lock(g)
+                    g.FillEllipse(Brush,
+                        new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
+                        4, 4));
             else
             {
                 base.Show(g);
