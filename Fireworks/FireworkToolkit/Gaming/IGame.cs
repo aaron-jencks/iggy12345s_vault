@@ -44,5 +44,40 @@ namespace FireworkToolkit.Gaming
         /// </summary>
         /// <returns>Returns a string representing the player's name</returns>
         string GetPlayerName();
+
+        /// <summary>
+        /// Saves the current score to the list of scores and determines if it's within the top number of spots for high scores
+        /// </summary>
+        /// <param name="topRange">The top n scores to check against, 10 means to check the top 10 high scores</param>
+        /// <returns>Returns if the current score is within the top n high scores, returns false otherwise.</returns>
+        bool SaveCurrentScore(int topRange);
+
+        /// <summary>
+        /// Saves the given score to the list of scores and determines if it's within the top number of spots for high scores
+        /// </summary>
+        /// <param name="score">The score to save to the list</param>
+        /// <param name="topRange">The top n scores to check against, 10 means to check the top 10 high scores</param>
+        /// <returns>Returns if the given score is within the top n high scores, returns false otherwise.</returns>
+        bool SaveScore(HighScore score, int topRange);
+
+        /// <summary>
+        /// Saves each of the given scores to the list of scores and determines if they are within the top number of spost for high scores
+        /// </summary>
+        /// <param name="scores"></param>
+        /// <param name="topRange"></param>
+        /// <returns></returns>
+        List<bool> SaveScoreRange(ICollection<HighScore> scores, int topRange);
+
+        /// <summary>
+        /// Wipes the scores list.
+        /// </summary>
+        void ResetScoresList();
+
+        /// <summary>
+        /// Retrieves the top n high scores
+        /// </summary>
+        /// <param name="topRange">The number of top scores to return</param>
+        /// <returns>Returns a list containing the n high scores</returns>
+        List<HighScore> GetHighScores(int topRange);
     }
 }
