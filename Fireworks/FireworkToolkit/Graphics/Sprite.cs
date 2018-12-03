@@ -124,45 +124,51 @@ namespace FireworkToolkit.SpriteGraphics
             isConverting = true;
 
             List<Thread> threads;
-            int height;
+            int height, adjustedPortion;
 
             Queue<Tuple<int, int>> tempQueue = new Queue<Tuple<int, int>>();
 
             lock (image)
             {
-                threads = new List<Thread>(image.Height);
+                threads = new List<Thread>(Environment.ProcessorCount);
                 height = image.Height;
+                adjustedPortion = height / Environment.ProcessorCount;
             }
 
-            for (int i = 0; i < height; i++)
+            // Splits the image into equal parts to be processed by each processor to avoid overloading the cpu and being inefficient
+            for (int processor = 1; processor <= Environment.ProcessorCount; processor++)
             {
-                // Creates a series of tasks to handle each row of the image
                 Thread t = new Thread((object row) =>
                 {
-                    Bitmap b;
-
-                    lock (image)
+                    int p = (int)row;
+                    for (int i = (p - 1) * adjustedPortion; i < p * adjustedPortion; i++)
                     {
-                        b = (Bitmap)image.Clone();
-                    }
+                        Bitmap b;
 
-                    for (int j = 0; j < b.Width; j++)
-                    {
-                        Color c = b.GetPixel(j, (int)row);
-                        if (c.R == maskColor.R && c.G == maskColor.G && c.B == maskColor.B)
+                        lock (image)
                         {
-                            Tuple<int, int> tuple = new Tuple<int, int>(j - (b.Width / 2), -1 * ((int)row - (b.Height / 2)));
-                            lock(tempQueue)
-                                tempQueue.Enqueue(tuple);
+                            b = (Bitmap)image.Clone();
                         }
-                    }
 
-                    b.Dispose();
+                        for (int j = 0; j < b.Width; j++)
+                        {
+                            Color c = b.GetPixel(j, (int)row);
+                            if (c.R == maskColor.R && c.G == maskColor.G && c.B == maskColor.B)
+                            {
+                                Tuple<int, int> tuple = new Tuple<int, int>(j - (b.Width / 2), -1 * ((int)row - (b.Height / 2)));
+                                lock (tempQueue)
+                                    tempQueue.Enqueue(tuple);
+                            }
+                        }
+
+                        b.Dispose();
+                    }
                 });
 
-                t.Start(i);
+                t.Start(processor);
 
                 threads.Add(t);
+                
             }
 
             // Waits until all of the threads have finished
