@@ -17,7 +17,7 @@ namespace FireworkToolkit.Graphics
         /// <summary>
         /// Contains all drawing requests for the object
         /// </summary>
-        protected Queue<GraphicsRequest> requests { get; private set; } = new Queue<GraphicsRequest>();
+        public Queue<GraphicsRequest> requests { get; private set; } = new Queue<GraphicsRequest>();
 
         /// <summary>
         /// Contains the image currently being drawn by this object

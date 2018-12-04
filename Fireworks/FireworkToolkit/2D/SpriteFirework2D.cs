@@ -1,4 +1,5 @@
-﻿using FireworkToolkit.SpriteGraphics;
+﻿using FireworkToolkit.Interfaces;
+using FireworkToolkit.SpriteGraphics;
 using FireworkToolkit.Templates;
 using FireworkToolkit.Vectors;
 using System;
@@ -117,6 +118,48 @@ namespace FireworkToolkit._2D
             {
                 base.Show(g);
             }
+        }
+
+        public override void Show(Bitmap img)
+        {
+            if (!Exploded)
+            {
+                int radius = Diameter >> 1;
+                Enumerable.Range(-1 * radius, radius).ToList().ForEach((i) =>
+                {
+                    Enumerable.Range(-1 * radius, radius).ToList().ForEach((j) =>
+                    {
+                        if (i * i + j * j <= radius * radius)
+                        {
+                            img.SetPixel(i + radius, j + radius, Color);
+                        }
+                    });
+                });
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't create a bitmap for a firework when you don't know how big the cloud will be.");
+            }
+        }
+
+        public override IParticle Clone()
+        {
+            SpriteFirework2D temp = new SpriteFirework2D((Vector2D)Position.Clone(), (Vector2D)Velocity.Clone(), sprite);
+            temp.Particles.Clear();
+            lock (Particles)
+                Particles.ToList().ForEach((p) =>
+                {
+                    temp.Particles.Add((AParticle)p.Clone());
+                });
+            temp.Mass = Mass;
+            temp.ParticleDiminishRate = ParticleDiminishRate;
+            temp.Exploded = Exploded;
+            temp.Color = Color;
+            temp.ExplosionPlacementRadius = ExplosionPlacementRadius;
+            temp.ExplosionMag = ExplosionMag;
+            temp.Diameter = Diameter;
+            temp.ExplosionAlpha = ExplosionAlpha;
+            return temp;
         }
 
         #endregion

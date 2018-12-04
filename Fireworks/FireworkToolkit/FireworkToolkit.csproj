@@ -100,6 +100,7 @@
       <DependentUpon>SpriteManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphics\GraphicsLib.cs" />
+    <Compile Include="Graphics\GraphicsRequest.cs" />
     <Compile Include="Graphics\Sprite.cs" />
     <Compile Include="Interfaces\IFilable.cs" />
     <Compile Include="Interfaces\IFirework.cs" />

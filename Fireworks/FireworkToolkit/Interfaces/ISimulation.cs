@@ -1,4 +1,5 @@
-﻿using FireworkToolkit.SpriteGraphics;
+﻿using FireworkToolkit.Graphics;
+using FireworkToolkit.SpriteGraphics;
 using FireworkToolkit.Templates;
 using System;
 using System.Collections.Generic;
@@ -119,5 +120,11 @@ namespace FireworkToolkit.Interfaces
         /// </summary>
         /// <param name="g">Graphics object to use</param>
         void Show(System.Drawing.Graphics g);
+
+        /// <summary>
+        /// Draws all of the fireworks using a request queue from a graphics lib object
+        /// </summary>
+        /// <param name="requestQueue">the queue to the graphics lib object</param>
+        void Show(Queue<GraphicsRequest> requestQueue);
     }
 }

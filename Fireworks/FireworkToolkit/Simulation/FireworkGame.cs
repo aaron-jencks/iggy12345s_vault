@@ -1,5 +1,6 @@
 ﻿using FireworkToolkit._2D;
 using FireworkToolkit.Gaming;
+using FireworkToolkit.Graphics;
 using FireworkToolkit.Interfaces;
 using FireworkToolkit.SpriteGraphics;
 using FireworkToolkit.Templates;
@@ -332,6 +333,11 @@ namespace FireworkToolkit.Simulation
                             break;
                     }
             }
+        }
+
+        public void Show(Queue<GraphicsRequest> requestQueue)
+        {
+            Simulation.Show(requestQueue);
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using FireworkToolkit.Gaming;
+using FireworkToolkit.Graphics;
 using FireworkToolkit.Simulation;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace FireworksGameApp
         /// Random number generator used by this form
         /// </summary>
         protected Random rng { get; private set; } = new Random();
+
+        private GraphicsLib graphicsLib { get; set; }
 
         private bool canDraw = false;
         private bool isDrawing = false;
@@ -69,6 +72,8 @@ namespace FireworksGameApp
             Game.Simulation.Width = Width;
             Game.Simulation.Height = Height;
 
+            graphicsLib = new GraphicsLib(Width, Height);
+
             while (isDrawing) ;
 
             canDraw = false;
@@ -77,7 +82,7 @@ namespace FireworksGameApp
             canvasBox.Height = Height;
 
             lock (canvasBox.Image)
-                canvasBox.Image = new Bitmap(Width, Height);
+                canvasBox.Image = graphicsLib.Image; //new Bitmap(Width, Height);
 
             canvasBox.Invalidate();
 
@@ -117,6 +122,7 @@ namespace FireworksGameApp
             if (canDraw && !Game.Simulation.isPaused)
             {
                 isDrawing = true;
+                /*
                 lock (canvasBox.Image)
                 {
                     //Image i = (Image)canvasBox.Image.Clone();
@@ -159,6 +165,8 @@ namespace FireworksGameApp
                     //canvasBox.Image = i;
                     canvasBox.Invalidate();
                 }
+                */
+                Game.Show(graphicsLib.requests);
             }
             isDrawing = false;
         }
@@ -173,6 +181,7 @@ namespace FireworksGameApp
         private void Form1_Disposed(object sender, EventArgs e)
         {
             Game.Stop();
+            graphicsLib.Dispose();
 
             // Tries to save the environment to an xml document, creating the file if it doesn't exist
             Console.WriteLine("Writing environment to the file");

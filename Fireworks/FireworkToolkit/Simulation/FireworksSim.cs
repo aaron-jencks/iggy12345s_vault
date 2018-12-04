@@ -1,4 +1,5 @@
 ﻿using FireworkToolkit._2D;
+using FireworkToolkit.Graphics;
 using FireworkToolkit.Interfaces;
 using FireworkToolkit.SpriteGraphics;
 using FireworkToolkit.Templates;
@@ -363,25 +364,21 @@ namespace FireworkToolkit.Simulation
                     {
                         Fireworks[j].Show(g);
                     }
-
-                    /*
-                    Thread t = new Thread((object p) =>
-                    {
-                        int f = (int)p;
-                        for (int j = f * adjustedIncrement; j < (f + 1) * adjustedIncrement; j++)
-                        {
-                            Fireworks[j].Show(g);
-                        }
-                    });
-
-                    t.Start(i);
-
-                    tasks.Add(t);
-                    */
                 }
 
                 foreach (Thread t in tasks)
                     while (t.IsAlive) ;
+            }
+        }
+
+        public virtual void Show(Queue<GraphicsRequest> requestQueue)
+        {
+            lock(Fireworks)
+            {
+                Fireworks.ForEach((f) =>
+                {
+                    f.Show(requestQueue);
+                });
             }
         }
 
