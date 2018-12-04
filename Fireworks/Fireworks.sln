@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogBoxTestbench", "Dialo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireworksGameApp", "FireworksGameApp\FireworksGameApp.csproj", "{A0431489-209A-4DD5-8526-7A24A7F15F40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighScoreTestbench", "HighScoreTestbench\HighScoreTestbench.csproj", "{2D7BF5E2-D241-4131-B2E4-6920FC5BE268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{A0431489-209A-4DD5-8526-7A24A7F15F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0431489-209A-4DD5-8526-7A24A7F15F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0431489-209A-4DD5-8526-7A24A7F15F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D7BF5E2-D241-4131-B2E4-6920FC5BE268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D7BF5E2-D241-4131-B2E4-6920FC5BE268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7BF5E2-D241-4131-B2E4-6920FC5BE268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D7BF5E2-D241-4131-B2E4-6920FC5BE268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{1EA5C1C1-BE60-489B-BF64-48DF52BE4849} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
 		{2AEA695F-F9E3-4090-AF03-D224F111FE40} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
 		{B590EB75-172E-407E-9D9A-40BD2CA7A366} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
+		{2D7BF5E2-D241-4131-B2E4-6920FC5BE268} = {91C068E5-A902-4C20-885B-28032A7EF2BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8AC8AA7-2F2A-4B0A-8567-532C5C9ABEDD}

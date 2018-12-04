@@ -38,6 +38,11 @@ namespace FireworkToolkit.Templates
 
         #endregion
 
+        /// <summary>
+        /// The diameter of the particle in pixels
+        /// </summary>
+        protected int Diameter { get; set; } = 4;
+
         private Color pcolor;
         /// <summary>
         /// The color that the particle uses when the Show() method is invoked
@@ -157,6 +162,8 @@ namespace FireworkToolkit.Templates
 
         public abstract void Show(System.Drawing.Graphics g);
 
+        public abstract void Show(Bitmap img);
+
         /// <summary>
         /// Steps the particle through n seconds of movement, resets the acceleration after 1 second.
         /// </summary>
@@ -170,6 +177,8 @@ namespace FireworkToolkit.Templates
                 Acceleration *= 0;
             }
         }
+
+        public abstract IParticle Clone();
 
         public override string ToString()
         {

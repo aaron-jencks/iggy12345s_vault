@@ -1,4 +1,5 @@
-﻿using FireworkToolkit.Templates;
+﻿using FireworkToolkit.Interfaces;
+using FireworkToolkit.Templates;
 using FireworkToolkit.Vectors;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,31 @@ namespace FireworkToolkit._2D
                 g.FillEllipse(Brush,
                     new Rectangle((int)Math.Round(((Vector2D)Position).X), (int)Math.Round(((Vector2D)Position).Y),
                     4, 4));
+        }
+
+        public override void Show(Bitmap img)
+        {
+            int radius = Diameter / 2;
+            Enumerable.Range(-1 * radius, radius).ToList().ForEach((i) =>
+            {
+                Enumerable.Range(-1 * radius, radius).ToList().ForEach((j) =>
+                {
+                    if(i*i + j*j <= radius * radius)
+                    {
+                        img.SetPixel((int)((Vector2D)Position).X + i, (int)((Vector2D)Position).Y + j, Color);
+                    }
+                });
+            });
+        }
+
+        public override IParticle Clone()
+        {
+            Particle2D temp = new Particle2D(Color.FromArgb(Color.ToArgb()), (Vector2D)Position.Clone(), (Vector2D)Velocity.Clone(), (Vector2D)Acceleration.Clone())
+            {
+                Diameter = Diameter,
+                Mass = Mass
+            };
+            return temp;
         }
     }
 }

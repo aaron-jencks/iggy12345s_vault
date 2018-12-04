@@ -30,5 +30,17 @@ namespace FireworkToolkit.Interfaces
         /// </summary>
         /// <param name="g">The graphics object to use</param>
         void Show(System.Drawing.Graphics g);
+
+        /// <summary>
+        /// Draws the particle onto the image supplied
+        /// </summary>
+        /// <param name="img">The image to draw on</param>
+        void Show(Bitmap img);
+
+        /// <summary>
+        /// Clones the particle
+        /// </summary>
+        /// <returns>Returns a new particle object with the same attributes as this one</returns>
+        IParticle Clone();
     }
 }

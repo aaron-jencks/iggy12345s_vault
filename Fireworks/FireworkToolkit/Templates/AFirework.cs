@@ -1,4 +1,5 @@
-﻿using FireworkToolkit.Interfaces;
+﻿using FireworkToolkit.Graphics;
+using FireworkToolkit.Interfaces;
 using FireworkToolkit.Vectors;
 using System;
 using System.Collections.Generic;
@@ -93,6 +94,88 @@ namespace FireworkToolkit.Templates
                 }
             }
             Busy = false;
+        }
+
+        /// <summary>
+        /// Draws the particles of this firework, or just the singular particle for this if
+        /// the firework has yet to explode.
+        /// </summary>
+        /// <param name="g">The graphics object to use to draw</param>
+        public async void Show(Queue<GraphicsRequest> requestQueue)
+        {
+            if (!Exploded)
+            {
+                Bitmap b = new Bitmap(Diameter, Diameter);
+                Show(b);
+                requestQueue.Enqueue(new GraphicsRequest(
+                    new Point((int)Position.AllComponents()['X'], (int)Position.AllComponents()['Y']), b));
+            }
+            else
+            {
+                while (Busy) ;
+                Busy = true;
+                List<AParticle> particlesClone = null;
+
+                // Clones particles so that we can make this method asynchronous
+                await Task.Run(() =>
+                {
+                    lock (Particles)
+                    {
+                        particlesClone = new List<AParticle>(Particles.Count);
+
+                        Particles.ToList().ForEach((p) =>
+                        {
+                            particlesClone.Add((AParticle)p.Clone());
+                        });
+                    }
+                });
+
+                // Represents the top-left and bottom-right coordinates of the particles generated
+                Point top = new Point(), bottom = new Point();
+
+                // Finds the top and bottom coordinates
+                await Task.Run(() =>
+                {
+                    int Ttop = 2147483647, Tleft = 2147483647, Tbottom = -2147483648, Tright = -2147483648;
+
+                    particlesClone.ForEach((p) =>
+                    {
+                        int x = (int)p.Position.AllComponents()['X'], y = (int)p.Position.AllComponents()['Y'];
+                        if (y < Ttop)
+                            Ttop = y;
+                        if (y > Tbottom)
+                            Tbottom = y;
+                        if (x < Tleft)
+                            Tleft = x;
+                        if (x > Tright)
+                            Tright = x;
+                    });
+
+                    top = new Point(Tleft, Ttop);
+                    bottom = new Point(Tright, Tbottom);
+                });
+
+                // Creates a new bitmap image to be drawn on
+                Bitmap sketch = new Bitmap(Math.Abs(bottom.X - top.X), Math.Abs(bottom.Y - top.Y));
+
+                await Task.Run(() =>
+                {
+                    particlesClone.ForEach((p) =>
+                    {
+                        if (ExplosionAlpha >= 0)
+                            p.Color = Color.FromArgb(ExplosionAlpha, p.Color.R, p.Color.G, p.Color.B);
+
+                        p.Position.AllComponents()['X'] -= top.X;
+                        p.Position.AllComponents()['Y'] -= top.Y;
+
+                        p.Show(sketch);
+                    });
+                });
+
+                requestQueue.Enqueue(new GraphicsRequest(top, sketch));
+
+                Busy = false;
+            }
         }
 
         #endregion

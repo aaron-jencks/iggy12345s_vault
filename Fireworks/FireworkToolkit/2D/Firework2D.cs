@@ -93,6 +93,28 @@ namespace FireworkToolkit._2D
             }
         }
 
+        public override void Show(Bitmap img)
+        {
+            if (!Exploded)
+            {
+                int radius = Diameter >> 1;
+                Enumerable.Range(-1 * radius, radius).ToList().ForEach((i) =>
+                {
+                    Enumerable.Range(-1 * radius, radius).ToList().ForEach((j) =>
+                    {
+                        if (i * i + j * j <= radius * radius)
+                        {
+                            img.SetPixel(i + radius, j + radius, Color);
+                        }
+                    });
+                });
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't create a bitmap for a firework when you don't know how big the cloud will be.");
+            }
+        }
+
         public override void Explode(int qty = 100)
         {
             base.Explode();
@@ -143,6 +165,26 @@ namespace FireworkToolkit._2D
                 Busy = false;
             });
             */
+        }
+
+        public override IParticle Clone()
+        {
+            Firework2D temp = new Firework2D((Vector2D)Position.Clone(), (Vector2D)Velocity.Clone());
+            temp.Particles.Clear();
+            lock(Particles)
+                Particles.ToList().ForEach((p) =>
+                {
+                    temp.Particles.Add((AParticle)p.Clone());
+                });
+            temp.Mass = Mass;
+            temp.ParticleDiminishRate = ParticleDiminishRate;
+            temp.Exploded = Exploded;
+            temp.Color = Color;
+            temp.ExplosionPlacementRadius = ExplosionPlacementRadius;
+            temp.ExplosionMag = ExplosionMag;
+            temp.Diameter = Diameter;
+            temp.ExplosionAlpha = ExplosionAlpha;
+            return temp;
         }
 
         #endregion
