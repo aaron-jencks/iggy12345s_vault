@@ -1,0 +1,10 @@
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\bin\Release\HighScoreTestbench.exe.config
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\bin\Release\HighScoreTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\bin\Release\HighScoreTestbench.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\bin\Release\FireworkToolkit.dll
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\bin\Release\FireworkToolkit.pdb
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\obj\Release\HighScoreTestbench.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\obj\Release\HighScoreTestbench.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\obj\Release\HighScoreTestbench.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\obj\Release\HighScoreTestbench.exe
+G:\Github Repository\iggy12345s_vault\Fireworks\HighScoreTestbench\obj\Release\HighScoreTestbench.pdb

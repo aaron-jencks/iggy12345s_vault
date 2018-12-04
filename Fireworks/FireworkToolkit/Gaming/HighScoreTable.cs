@@ -22,7 +22,7 @@ namespace FireworkToolkit.Gaming
             InitializeComponent();
             List<HighScore> temp = scores.ToList();
             temp.Sort();
-            temp.Reverse();
+            //temp.Reverse();
             foreach (HighScore s in temp)
                 listBox1.Items.Add(s);
             

@@ -88,6 +88,7 @@ namespace FireworkToolkit.Gaming
         public virtual List<HighScore> GetHighScores(int topRange = 10)
         {
             List<HighScore> results = new List<HighScore>(topRange);
+            ScoresList.Sort();
             for (int i = 0; i < ((topRange < ScoresList.Count) ? topRange : ScoresList.Count); i++)
                 results.Add(ScoresList[i]);
             return results;

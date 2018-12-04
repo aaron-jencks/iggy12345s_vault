@@ -26,7 +26,7 @@ namespace FireworkToolkit.Gaming
 
         public int CompareTo(HighScore other)
         {
-            return Score.CompareTo(other.Score);
+            return other.Score.CompareTo(Score);
         }
 
         public XElement GetElement()
