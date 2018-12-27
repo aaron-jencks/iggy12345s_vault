@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Execute this program from the directory that you are currently working in
+# Pass in your Github repo directory as the first argument
+
 echo "If you haven't run the installations_helper.sh script, you should probably do that"
 echo "Creating file directory"
 mkdir "data"
