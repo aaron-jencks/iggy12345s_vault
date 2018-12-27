@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# To use this, simply pass in the directoy that you want the github repositories downloaded into in as the first argument
+
 echo "Installing git, if you don't already have it"
 sudo apt install git
 echo "Need to make sure you have python 3.6 and pip3"
