@@ -48,7 +48,7 @@ echo "Compiling and installing in general"
 python3 setup.py build
 python3 setup.py install
 echo "Adding libraries to PYTHONPATH"
-py_path="$(pwd)"
+py_path="$1"
 export PYTHONPATH=$PYTHONPATH:${py_path}:${py_path}"/slim"
 sudo sh -c 'echo "export PYTHONPATH=$PYTHONPATH:$1:$1/slim" >> ~/.bashrc'
 echo "Testing the installation"
