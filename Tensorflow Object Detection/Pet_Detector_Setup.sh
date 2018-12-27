@@ -2,6 +2,9 @@
 
 # Execute this program from the directory that you are currently working in
 # Pass in your Github repo directory as the first argument
+# Review http://aaronjencks.net/blog/9/ for info on how to download and use a different model
+# -> or, just change the model name to the one that you want
+# -> Copy the corresponding .config file from /object_detection/samples/configs/ (or point to your own)
 
 echo "If you haven't run the installations_helper.sh script, you should probably do that"
 echo "Creating file directory"
@@ -23,12 +26,14 @@ p="${1}""/object_detection/dataset_tools/create_pet_tf_record.py"
 echo $p
 sudo python3 $p --label_map_path="./data/pet_label_map.pbtxt" --data_dir='.' --output_dir='./data'
 echo "Downloading the pretrained model"
+# CHANGE THIS IF USING A DIFFERENT MODEL!!!
 model_name="ssdlite_mobilenet_v2_coco_2018_05_09"
 #http://download.tensorflow.org/models/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz
 wget "http://storage.googleapis.com/download.tensorflow.org/models/object_detection/${model_name}.tar.gz"
 tar -xvf "${model_name}.tar.gz" -C ./models
 cp "./models/${model_name}/*.ckpt" ./models/model
 echo "Copying the config file"
+# CHANGE THIS IF USING A DIFFERENT MODEL!!!
 cp "$1/object_detection/samples/configs/faster_rcnn_resnet101_pets.config" "models/model"
 echo "Configuring the config file"
 data_dir="$(pwd)""/data"
