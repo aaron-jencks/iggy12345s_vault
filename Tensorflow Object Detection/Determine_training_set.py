@@ -1,7 +1,5 @@
 from random import shuffle
-import os, fnmatch
-import pandas as pd
-import xml.etree.ElementTree as ET
+import os, fnmatch, pathlib, shutil
 
 def read_train_val():
 	"""Reads the names of all image files from the ./images/raw/ directory and then
@@ -21,6 +19,12 @@ def read_train_val():
 	test_values = files[split_loc:]
 	return (train_values, test_values)
 	
+def copy_files(file_list, dst):
+	"""Copies a list of files to another directory"""
+	for file in file_list:
+		print("Copying " + file + " to " + dst)
+		shutil.copy(file, dst)
+	
 if __name__ == '__main__':
 	"""Separates the image files in the ./images/raw/ directory into two categories
 	then moves them into two directories, ./images/train/, and ./images/test/."""
@@ -29,4 +33,12 @@ if __name__ == '__main__':
 	# Then splits it into training and testing values
 	(train, test) = read_train_val()
 	
+	# Creates the train folder if it doesn't exist yet.
+	pathlib.Path("./images/train/").mkdir(parents=True, exist_ok=True)
 	
+	# Creates the test folder if it doesn't exist yet.
+	pathlib.Path("./images/test/").mkdir(parents=True, exist_ok=True)
+	
+	# Copies the files into their respective directories
+	copy_files(train, "./images/train/")
+	copy_files(test, "./images/test/")
