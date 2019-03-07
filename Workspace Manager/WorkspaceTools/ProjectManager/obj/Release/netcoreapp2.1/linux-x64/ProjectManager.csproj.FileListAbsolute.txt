@@ -1,0 +1,16 @@
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\libhostpolicy.so
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\libhostfxr.so
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\ProjectManager
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\ProjectManager.deps.json
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\ProjectManager.runtimeconfig.json
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\ProjectManager.runtimeconfig.dev.json
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\ProjectManager.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\ProjectManager.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\WorkspaceTools.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Release\netcoreapp2.1\linux-x64\WorkspaceTools.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Release\netcoreapp2.1\linux-x64\ProjectManager.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Release\netcoreapp2.1\linux-x64\ProjectManager.AssemblyInfoInputs.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Release\netcoreapp2.1\linux-x64\ProjectManager.AssemblyInfo.cs
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Release\netcoreapp2.1\linux-x64\ProjectManager.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Release\netcoreapp2.1\linux-x64\ProjectManager.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Release\netcoreapp2.1\linux-x64\ProjectManager.pdb

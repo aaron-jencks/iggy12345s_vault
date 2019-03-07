@@ -1,0 +1,10 @@
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\bin\Release\ProjectCreator.exe.config
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\bin\Release\ProjectCreator.exe
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\bin\Release\ProjectCreator.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\bin\Release\WorkspaceTools.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\bin\Release\WorkspaceTools.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\obj\Release\ProjectCreator.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\obj\Release\ProjectCreator.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\obj\Release\ProjectCreator.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\obj\Release\ProjectCreator.exe
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectCreator\obj\Release\ProjectCreator.pdb

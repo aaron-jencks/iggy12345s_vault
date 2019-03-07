@@ -64,6 +64,13 @@ def xml_to_csv(xml_file_list):
 		tree = ET.parse(xml_file)
 		root = tree.getroot()
 		for member in root.findall('object'):
+			filename = root.find('filename').text
+			v_class = member[0].text
+			xmin = int(member[4][0].text)
+			ymin = int(member[4][1].text)
+			xmax = int(member[4][2].text)
+			ymax = int(member[4][3].text)
+			print('File ' + filename + " class: " + v_class + " at " + str(xmin) + ", " + str(ymin) + ", " + str(xmax) + ", " + str(ymax))
 			value = (root.find('filename').text,
 				int(root.find('size')[0].text),
 				int(root.find('size')[1].text),
@@ -80,8 +87,14 @@ def xml_to_csv(xml_file_list):
 	xml_df = pd.DataFrame(xml_list, columns=column_name)
 	return xml_df
 	
+# YOU HAVE TO CHANGE THIS EVERY TIME AARON!!!!
+#
+# TO MATCH THE LABEL MAP
+#
+# TO MATCH THE LABEL MAP
+#
 def class_text_to_int(row_label):
-    if row_label == 'Soy':
+    if row_label == 'Corn':
         return 1
     else:
         None
@@ -93,11 +106,13 @@ def split(df, group):
 
 	
 def create_tf_example(group, path):
+    print("opening " + group.filename)
     with tf.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
         encoded_jpg = fid.read()
     encoded_jpg_io = io.BytesIO(encoded_jpg)
     image = Image.open(encoded_jpg_io)
     width, height = image.size
+    print("Size: " + str(width) + ", " + str(height))
 
     filename = group.filename.encode('utf8')
     image_format = b'jpg'
@@ -115,6 +130,9 @@ def create_tf_example(group, path):
         ymaxs.append(row['ymax'] / height)
         classes_text.append(row['class'].encode('utf8'))
         classes.append(class_text_to_int(row['class']))
+	
+    print(group)
+    print(classes)
 
     tf_example = tf.train.Example(features=tf.train.Features(feature={
         'image/height': dataset_util.int64_feature(height),

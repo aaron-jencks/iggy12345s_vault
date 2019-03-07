@@ -1,0 +1,14 @@
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\ProjectManager.deps.json
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\ProjectManager.runtimeconfig.json
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\ProjectManager.runtimeconfig.dev.json
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\ProjectManager.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\ProjectManager.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\WorkspaceTools.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\bin\Debug\netcoreapp2.1\WorkspaceTools.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.AssemblyInfoInputs.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.AssemblyInfo.cs
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.csproj.CopyComplete
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\ProjectManager\obj\Debug\netcoreapp2.1\ProjectManager.pdb

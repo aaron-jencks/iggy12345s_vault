@@ -1,0 +1,6 @@
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\WorkspaceTools\bin\Debug\WorkspaceTools.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\WorkspaceTools\bin\Debug\WorkspaceTools.pdb
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\WorkspaceTools\obj\Debug\WorkspaceTools.csprojAssemblyReference.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\WorkspaceTools\obj\Debug\WorkspaceTools.csproj.CoreCompileInputs.cache
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\WorkspaceTools\obj\Debug\WorkspaceTools.dll
+G:\Github Repository\iggy12345s_vault\Workspace Manager\WorkspaceTools\WorkspaceTools\obj\Debug\WorkspaceTools.pdb
